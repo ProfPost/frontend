@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { AuthRequest } from '../../../shared/models/auth-request.model';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -33,6 +35,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private authService = inject(AuthService);
 
   constructor() {
     this.loginForm = this.fb.group({
@@ -49,8 +52,20 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return;
     }
-    console.log(this.loginForm.value);
-    this.showSnackBar('Inicio de Sesión Exitoso');
+
+    const credentials: AuthRequest = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
+      next: () => {
+        this.showSnackBar('Inicio de Sesión Existoso');
+        this.router.navigate(['/reader']);
+      },
+      error: () => {
+        this.showSnackBar(
+          'Error en el inicio de sesión. Por favor, intenta de nuevo.'
+        );
+      },
+    });
   }
 
   private showSnackBar(message: string): void {
