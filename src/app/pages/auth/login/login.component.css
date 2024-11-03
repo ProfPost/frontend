@@ -1,0 +1,102 @@
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(
+    100vh - 120px
+  ); /* Ajusta la altura total menos el espacio del navbar y footer */
+  padding-top: 1rem; /* Agrega un poco de espacio desde el navbar */
+  background-color: #f8f9f4; /* Fondo general */
+  padding-bottom: 1rem; /* Espacio adicional antes del footer */
+}
+
+/* Imagen del logo */
+.image-container {
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  background-color: #f8f9f4; /* Color de fondo detrás de la imagen */
+  text-align: center;
+}
+
+/* Imagen del logo */
+.mb-4 {
+  width: 150px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+/* Centrar el contenedor del formulario */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  max-width: 350px; /* Ancho máximo del cuadro */
+
+  background-color: #e5e8d8; /* Fondo gris claro */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos del formulario */
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-label {
+  color: #757575; /* Gris */
+}
+
+/* Placeholder de los inputs */
+::placeholder {
+  color: #757575;
+  font-style: italic;
+}
+
+/* Botón de Iniciar Sesión */
+.submit-button {
+  background-color: #087443 !important; /* Color verde */
+  color: #ffffff !important; /* Texto blanco */
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.submit-button:hover {
+  background-color: #065c32 !important; /* Verde más oscuro para hover */
+}
+
+/* Enlace de registro */
+.register-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
