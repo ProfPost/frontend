@@ -1,0 +1,29 @@
+.navbar {
+    padding: 1rem;
+    background-color: #e5e8d8; /* Espacio interno alrededor de los elementos de la barra de navegación */
+  }
+  .btn-outline-primary {
+    color: #087443; /* Color del texto del botón de contorno "Regístrate" */
+    border-color: #087443; /* Color del borde del botón */
+  }
+  
+  .navbar .nav-link {
+    color: #000 !important; /* Cambia el color del texto de los enlaces a negro */
+  }
+  
+  .navbar .navbar-brand {
+    color: #000 !important; /* Cambia el color del texto del logo a negro */
+  }
+  
+  .btn-outline-primary:hover {
+    color: #000000; /* Cambia el color del texto a blanco al pasar el cursor */
+    background-color: #087443; /* Cambia el fondo al color principal */
+    border-color: #087443; /* Mantiene el color del borde */
+  }
+  .btn-primary {
+    background-color: #087443; /* Fondo del botón "Iniciar Sesión" */
+    border: none; /* Sin borde para un diseño limpio */
+  }
+  .btn-primary:hover {
+    background-color: #087443; /* Fondo del botón cuando el cursor pasa por encima */
+  }
