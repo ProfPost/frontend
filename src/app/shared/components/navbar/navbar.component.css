@@ -1,38 +1,38 @@
 .navbar {
   padding: 1rem;
-  background-color: #e5e8d8;
+  background-color: #e5e8d8; /* Espacio interno alrededor de los elementos de la barra de navegación */
 }
 
 .btn-outline-primary {
-  color: #087443;
-  border-color: #087443;
+  color: #087443; /* Color del texto del botón de contorno "Regístrate" */
+  border-color: #087443; /* Color del borde del botón */
 }
 
 .navbar .nav-link {
-  color: #000 !important;
+  color: #000 !important; /* Cambia el color del texto de los enlaces a negro */
 }
 
 .navbar .navbar-brand {
-  color: #000 !important;
+  color: #000 !important; /* Cambia el color del texto del logo a negro */
 }
 
 .btn-outline-primary:hover {
-  color: #000000;
-  background-color: #087443;
-  border-color: #087443;
+  color: #000000; /* Cambia el color del texto a blanco al pasar el cursor */
+  background-color: #087443; /* Cambia el fondo al color principal */
+  border-color: #087443; /* Mantiene el color del borde */
 }
 
 .btn-primary {
-  background-color: #087443;
-  border: none;
+  background-color: #087443; /* Fondo del botón "Iniciar Sesión" */
+  border: none; /* Sin borde para un diseño limpio */
 }
 
 .btn-primary:hover {
-  background-color: #087443;
+  background-color: #087443; /* Fondo del botón cuando el cursor pasa por encima */
 }
 
 .navbar-toggler {
-  border-color: #087443;
+  border-color: #087443; /* Color verde para el borde */
 }
 
 .navbar-toggler-icon {
@@ -40,16 +40,19 @@
 }
 
 .navbar-toggler:hover {
-  box-shadow: 0 0 5px #087443;
+  box-shadow: 0 0 5px #087443; /* Cambia el color de la sombra a verde */
 }
 
-.navbar-toggler:focus, .navbar-toggler:active {
-  outline: none;
-  box-shadow: 0 0 5px #087443;
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none; /* Elimina el borde de enfoque por defecto */
+  box-shadow: 0 0 5px #087443; /* Mantiene la sombra verde al hacer clic */
 }
 
+/* Espaciado entre botones en modo responsive */
 @media (max-width: 992px) {
+  /* Ajusta el tamaño según el punto de ruptura de tu diseño */
   .navbar-nav .nav-item {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Agrega espacio entre los elementos del menú en responsive */
   }
 }
