@@ -17,9 +17,9 @@
 }
 
 .btn-outline-primary:hover {
-  color: #000000; /* Cambia el color del texto a blanco al pasar el cursor */
-  background-color: #087443; /* Cambia el fondo al color principal */
-  border-color: #087443; /* Mantiene el color del borde */
+  color: #ffffff;
+  background-color: #087443;
+  border-color: #087443;
 }
 
 .btn-primary {
