@@ -11,43 +11,49 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item ms-3">
-          <a
-            href="#register"
-            class="btn btn-outline-primary"
-            routeLink="/auth/register"
-          >
-            Regístrate
-          </a>
-        </li>
-        <li class="nav-item ms-2">
-          <a href="#login" class="btn btn-primary" routeLink="/auth/login">
-            Iniciar Sesión
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            href="#"
-            class="nav-link dropdown-toggle"
-            id="profileDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-          >
-            Mi Perfil
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#" class="dropdown-item" routerLink="/reader/profile">
-                Ver Perfil
-              </a>
-            </li>
-            <li>
-              <a href="#" class="dropdown-item" (click)="logout()">
-                Cerrar Sesión
-              </a>
-            </li>
-          </ul>
-        </li>
+        @if (!isAuthenticated) {
+
+          <li class="nav-item ms-3">
+            <a
+              href="#register"
+              class="btn btn-outline-primary"
+              routerLink="/auth/register"
+            >
+              Regístrate
+            </a>
+          </li>
+          <li class="nav-item ms-2">
+            <a href="#login" class="btn btn-primary" routerLink="/auth/login">
+              Iniciar Sesión
+            </a>
+          </li>
+
+        } @else {
+
+          <li class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              id="profileDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              Mi Perfil
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#" class="dropdown-item" routerLink="/reader/profile">
+                  Ver Perfil
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-item" (click)="logout()">
+                  Cerrar Sesión
+                </a>
+              </li>
+            </ul>
+          </li>
+        }
       </ul>
     </div>
   </div>
