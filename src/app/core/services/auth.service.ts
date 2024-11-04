@@ -25,7 +25,9 @@ export class AuthService {
   }
 
   register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(`${this.baseURL}/register/reader`,registerRequest
+    return this.http.post<RegisterResponse>(
+      `${this.baseURL}/register/reader`,
+      registerRequest
     );
   }
 
@@ -40,5 +42,10 @@ export class AuthService {
   getUser(): AuthResponse | null {
     const authData = this.storageService.getAuthData();
     return authData ? authData : null;
+  }
+
+  getUserRole(): string | null {
+    const user = this.getUser();
+    return user ? user.role : null;
   }
 }
