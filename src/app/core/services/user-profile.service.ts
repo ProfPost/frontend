@@ -13,15 +13,10 @@ export class UserProfileService {
   private http = inject(HttpClient);
 
   getUserProfile(userId: number): Observable<UserProfile> {
-    return this.http.get<UserProfile>(`${this.baseURL}/${userId}`).pipe(
-      tap((data) => console.log('Datos recibidos del backend:', data)) // Para verificar que llegan los datos
-    );
+    return this.http.get<UserProfile>(`${this.baseURL}/${userId}`);
   }
 
-  updateUserProfile(
-    userId: number,
-    profileData: UserProfile
-  ): Observable<UserProfile> {
+  updateUserProfile(userId: number,profileData: UserProfile): Observable<UserProfile> {
     return this.http.put<UserProfile>(`${this.baseURL}/${userId}`, profileData);
   }
 }

@@ -1,11 +1,23 @@
-<div class="container" *ngIf="profile">
-  <h2>Perfil de Usuario</h2>
-  <p><strong>Nombre:</strong> {{ profile.name }}</p>
-  <p><strong>Rol:</strong> {{ profile.role }}</p>
-  <p><strong>Email:</strong> {{ profile.email }}</p>
-  <p><strong>Biografia:</strong> {{ profile.biography }}</p>
+<div class="container-background">
+  <!-- Contenedor del perfil -->
+  <div class="profile-container" *ngIf="profile">
+    <a href="#" class="back-button">
+      <i class="fas fa-arrow-left"></i> {{ profile.name }}
+    </a>
 
-  <button (click)="navigateToUpdateProfile()" class="update-button">
-    Editar Perfil
-  </button>
+    <div class="profile-content">
+      <img src="assets/images/usuarios/user1.png" alt="Foto de perfil" />
+
+      <div class="profile-details">
+        <h2>{{ profile.name }}</h2>
+        <p class="role">Rol: {{ profile.role }}</p>
+        <p class="biography">{{ profile.biography }}</p>
+        <br />
+        <br />
+        <button (click)="navigateToUpdateProfile()" class="update-button">
+          Editar Perfil
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

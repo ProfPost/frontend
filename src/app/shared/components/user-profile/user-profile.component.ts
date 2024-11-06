@@ -32,15 +32,16 @@ export class UserProfileComponent implements OnInit {
     if (userId) {
       this.userProfileService.getUserProfile(userId).subscribe({
         next: (profile) => {
-          console.log('Datos del perfil:', profile); // Verifica que los datos sean correctos
           this.profile = profile;
           this.showSnackBar('Perfil cargado con éxito');
         },
         error: (error) => {
-          console.error('Error al cargar el perfil:', error);
           this.showSnackBar('Error al cargar el perfil');
         },
       });
+    } else {
+      this.showSnackBar('Usuario no autenticado');
+      this.router.navigate(['/auth/login']);
     }
   }
 
