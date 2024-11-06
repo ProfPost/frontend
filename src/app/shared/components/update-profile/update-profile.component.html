@@ -1,1 +1,45 @@
-<p>update-profile works!</p>
+<section class="update-profile-container">
+    <div class="update-profile-card">
+      <div class="profile-image-container">
+        <div class="image-wrapper">
+          <img src="assets/images/usuarios/user1.png" alt="Foto de perfil" class="profile-image" />
+          <div class="camera-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+        </div>
+      </div>
+  
+      <div class="update-profile-form">
+        <h2>Editar Perfil</h2>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Ingrese su nombre" />
+            @if (controlHasError('name', 'required')) {
+            <mat-error>Este campo es obligatorio</mat-error>
+            }
+          </mat-form-field>
+  
+          <mat-form-field class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="Ingrese su correo electrónico" />
+            @if (controlHasError('email', 'required')) {
+            <mat-error>Este campo es obligatorio</mat-error>
+            } @if (controlHasError('email', 'email')) {
+            <mat-error>Introduzca un correo electrónico válido</mat-error>
+            }
+          </mat-form-field>
+  
+          <mat-form-field class="form-field">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="biography" placeholder="Ingrese su descripción"></textarea>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="profileForm.invalid">
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
