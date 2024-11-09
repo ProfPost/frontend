@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
-
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-reader-layout',
@@ -14,6 +13,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     FooterComponent,
     RouterOutlet,
     RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './reader-layout.component.html',
   styleUrl: './reader-layout.component.css',

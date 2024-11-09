@@ -5,6 +5,7 @@ import { UpdateProfileComponent } from '../../shared/components/update-profile/u
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PublicationsCatalogComponent } from './publications-catalog/publications-catalog.component';
+import {SearcherComponent} from './searcher/searcher.component';
 
 export const readerroutes: Routes = [
   {
@@ -16,6 +17,7 @@ export const readerroutes: Routes = [
       { path: 'publications-catalog', component: PublicationsCatalogComponent },
       { path: 'playlist', component: PlaylistComponent },
       { path: 'purchases', component: PurchasesComponent },
+      { path: 'search', component: SearcherComponent }
     ],
   },
 ];
