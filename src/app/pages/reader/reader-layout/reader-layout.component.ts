@@ -1,15 +1,28 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-reader-layout',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterOutlet],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    FooterComponent,
+    RouterOutlet,
+    RouterLink,
+  ],
   templateUrl: './reader-layout.component.html',
-  styleUrl: './reader-layout.component.css'
+  styleUrl: './reader-layout.component.css',
 })
 export class ReaderLayoutComponent {
+  isSidebarActive = false;
 
+  toggleSidebar(): void {
+    this.isSidebarActive = !this.isSidebarActive;
+  }
 }
