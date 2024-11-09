@@ -1,13 +1,17 @@
 /* Ajustes generales */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9f4;
   margin: 0;
 }
 
 .container-layout {
   display: flex;
   height: 100vh;
+  background-color: #e5e8d8;
+}
+
+.main-content {
+  background-color: #e5e8d8;
 }
 
 .sidebar {
