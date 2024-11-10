@@ -1,0 +1,19 @@
+<body>
+<div class="search-container">
+  <h2>Buscar</h2>
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      (input)="onSearch()"
+      placeholder="Buscar usuario..."
+    />
+  </div>
+  <div *ngIf="results.length > 0" class="results-container">
+    <div *ngFor="let result of results" class="result-item">
+      <a [routerLink]="['/reader/profile', result.id]">{{ result.name }}</a>
+      <span class="role">{{ result.role }}</span>
+    </div>
+  </div>
+</div>
+</body>

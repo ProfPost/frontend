@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { UserProfile } from '../../models/user-profile.model';
 import { UserProfileService } from '../../../core/services/user-profile.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 
@@ -15,11 +15,13 @@ import { CommonModule } from '@angular/common';
 })
 export class UserProfileComponent implements OnInit {
   profile!: UserProfile;
+  isOwnProfile: boolean = false;
 
   private userProfileService = inject(UserProfileService);
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -29,20 +31,36 @@ export class UserProfileComponent implements OnInit {
     const authData = this.authService.getUser();
     const userId = authData?.id;
 
-    if (userId) {
-      this.userProfileService.getUserProfile(userId).subscribe({
-        next: (profile) => {
-          this.profile = profile;
-          this.showSnackBar('Perfil cargado con éxito');
-        },
-        error: (error) => {
-          this.showSnackBar('Error al cargar el perfil');
-        },
-      });
-    } else {
-      this.showSnackBar('Usuario no autenticado');
-      this.router.navigate(['/auth/login']);
-    }
+    this.route.paramMap.subscribe((params) => {
+      const profileId = Number(params.get('id'));
+
+      if (profileId) {
+        this.userProfileService.getUserProfile(profileId).subscribe({
+          next: (profile) => {
+            this.profile = profile;
+            this.isOwnProfile = profile.id === userId;
+            this.showSnackBar('Perfil cargado con éxito');
+          },
+          error: (error) => {
+            this.showSnackBar('Error al cargar el perfil');
+          },
+        });
+      } else if (userId) {
+        this.userProfileService.getUserProfile(userId).subscribe({
+          next: (profile) => {
+            this.profile = profile;
+            this.isOwnProfile = true;
+            this.showSnackBar('Perfil cargado con éxito');
+          },
+          error: (error) => {
+            this.showSnackBar('Error al cargar el perfil');
+          },
+        });
+      } else {
+        this.showSnackBar('Usuario no autenticado');
+        this.router.navigate(['/auth/login']);
+      }
+    });
   }
 
   navigateToUpdateProfile(): void {
