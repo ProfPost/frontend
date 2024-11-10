@@ -2,8 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {UserSearchRequest} from '../../shared/models/user-search-request.models';
-import {UserSearchResponse} from '../../shared/models/user-search-response.models';
+import {UserSearchRequest} from '../../shared/models/user-search-request.model';
+import {UserSearchResponse} from '../../shared/models/user-search-response.model';
 
 @Injectable({
   providedIn: 'root',

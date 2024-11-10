@@ -19,5 +19,8 @@
         </button>
       </div>
     </div>
+    <div class="plans-section">
+      <app-show-plans *ngIf="isCreatorProfile && !isOwnProfile"></app-show-plans>
+    </div>
   </div>
 </div>

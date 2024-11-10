@@ -5,17 +5,19 @@ import { AuthService } from '../../../core/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import {ShowPlansComponent} from '../show-plans/show-plans.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ShowPlansComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
 })
 export class UserProfileComponent implements OnInit {
   profile!: UserProfile;
   isOwnProfile: boolean = false;
+  isCreatorProfile: boolean = false;
 
   private userProfileService = inject(UserProfileService);
   private authService = inject(AuthService);
@@ -39,6 +41,7 @@ export class UserProfileComponent implements OnInit {
           next: (profile) => {
             this.profile = profile;
             this.isOwnProfile = profile.id === userId;
+            this.isCreatorProfile = profile.role === 'CREATOR';
             this.showSnackBar('Perfil cargado con éxito');
           },
           error: (error) => {
