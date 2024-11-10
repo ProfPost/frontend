@@ -4,6 +4,7 @@ import {UserSearchService} from '../../../core/services/user-search.service';
 import {UserSearchRequest} from '../../../shared/models/user-search-request.models';
 import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-searcher',
@@ -11,7 +12,8 @@ import {NgForOf, NgIf} from '@angular/common';
   imports: [
     FormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './searcher.component.html',
   styleUrl: './searcher.component.css'
@@ -20,7 +22,7 @@ export class SearcherComponent {
   search: string = '';
   results: UserSearchResponse[] = [];
 
-  constructor(private userSearchService: UserSearchService) {}
+  constructor(private userSearchService: UserSearchService, private router: Router) {}
 
   onSearch() {
     if (this.search.trim()){
@@ -37,5 +39,8 @@ export class SearcherComponent {
     } else {
       this.results = [];
     }
+  }
+  viewUserProfile(userId: number): void {
+    this.router.navigate(['/user/profile', userId]);
   }
 }

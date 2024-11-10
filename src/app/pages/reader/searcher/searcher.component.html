@@ -6,12 +6,12 @@
       type="text"
       [(ngModel)]="search"
       (input)="onSearch()"
-      placeholder="Buscar por nombre de usuario"
+      placeholder="Buscar usuario..."
     />
   </div>
   <div *ngIf="results.length > 0" class="results-container">
     <div *ngFor="let result of results" class="result-item">
-      <span class="name">{{ result.name }}</span>
+      <a [routerLink]="['/reader/profile', result.id]">{{ result.name }}</a>
       <span class="role">{{ result.role }}</span>
     </div>
   </div>
