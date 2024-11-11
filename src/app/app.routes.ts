@@ -21,4 +21,11 @@ export const routes: Routes = [
       import('./pages/reader/reader.routes').then((r) => r.readerroutes),
     canActivate: [authGuard],
   },
+
+  {
+    path: 'creator',
+    loadChildren: () =>
+      import('./pages/creator/creator.routes').then((r) => r.creatorroutes),
+    canActivate: [authGuard],
+  },
 ];
