@@ -50,6 +50,7 @@ export class PurchasesComponent implements OnInit{
       error: () => {
         this.loading = false;
         alert('Error en la suscripción')
+        this.clearlocalstorage();
       },
     });
   }
@@ -63,6 +64,7 @@ export class PurchasesComponent implements OnInit{
       error: () => {
         this.loading = false;
         alert('Error al crear la compra');
+        this.clearlocalstorage();
       },
     });
   }
@@ -79,6 +81,7 @@ export class PurchasesComponent implements OnInit{
       error: () => {
         this.loading = false;
         alert('Error al redirigir a PayPal');
+        this.clearlocalstorage();
       },
     });
   }
@@ -87,16 +90,20 @@ export class PurchasesComponent implements OnInit{
     this.checkoutService.captureOrder(orderId).subscribe({
       next: (response) => {
         if (response.completed) {
-          localStorage.clear();
+          this.clearlocalstorage();
           this.router.navigate(['/reader/subscriptions']);
           this.showSnackBar('Felicidades! Estás suscrito');
         } else {
           this.router.navigate(['/reader/search']);
+          this.clearlocalstorage();
           this.showSnackBar('Lo sentimos, no pudiste suscribirte :c');
         }
       },
       error: () => {
+        this.router.navigate(['/reader/search']);
         alert('Error al capturar el pedido')
+        this.showSnackBar('Lo sentimos, no pudiste suscribirte :c');
+        this.clearlocalstorage();
       }
     })
   }
@@ -105,5 +112,13 @@ export class PurchasesComponent implements OnInit{
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
     });
+  }
+
+  clearlocalstorage(): void {
+    localStorage.removeItem('selectedUser');
+    localStorage.removeItem('selectedPlan');
+    localStorage.removeItem('subscriptionData');
+    localStorage.removeItem('purchaseResponse');
+    localStorage.removeItem('subscriptionResponse');
   }
 }

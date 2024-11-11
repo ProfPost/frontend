@@ -83,4 +83,10 @@ export class UserProfileComponent implements OnInit {
       duration: 3000,
     });
   }
+
+  clearSelectedUser(): void {
+    localStorage.removeItem('selectedUser');
+    localStorage.removeItem('selectedPlan');
+    localStorage.removeItem('subscriptionData');
+  }
 }

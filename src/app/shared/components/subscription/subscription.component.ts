@@ -1,9 +1,7 @@
 import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {DecimalPipe, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {ShowPlan} from '../../models/show-plan.model';
-import {SubscribeService} from '../../../core/services/subscription.service';
 
 @Component({
   selector: 'app-subscription',
@@ -17,9 +15,6 @@ import {SubscribeService} from '../../../core/services/subscription.service';
   styleUrl: './subscription.component.css'
 })
 export class SubscriptionComponent implements OnInit{
-  private snackBar = inject(MatSnackBar);
-  private subscriptionService = inject(SubscribeService);
-
   userName: string = '';
   userId: number = 0;
   creatorId: number = 0;
@@ -76,6 +71,8 @@ export class SubscriptionComponent implements OnInit{
   closePopup(): void {
     this.isPopupVisible = false;
     this.isPaymentConfirmationVisible = false;
+    localStorage.removeItem('selectedPlan');
+    localStorage.removeItem('subscriptionData');
     this.popupClosed.emit();
   }
 

@@ -48,15 +48,9 @@ export class ShowPlansComponent implements OnInit{
   }
 
   subscribeToPlan(plan: ShowPlan): void {
-    const selectedUser = JSON.parse(localStorage.getItem('selectedUser') || '{}');
-
     localStorage.setItem('selectedPlan', JSON.stringify(plan));
     this.selectedPlan = plan;
     this.isPopupVisible = true;
-  }
-
-  handlePopupClosed(): void {
-    this.isPopupVisible = false;
   }
 
   startPaymentProcess(): void {
