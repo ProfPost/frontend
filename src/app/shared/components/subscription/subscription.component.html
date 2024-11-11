@@ -1,0 +1,45 @@
+<div class="popup-overlay">
+  <div class="popup">
+    <button class="close-button" (click)="closePopup()">×</button>
+
+    <h3>Completar compra</h3>
+    <p>Resumen de compra:</p>
+
+    <div class="summary-item">
+      <span>Suscripción a:</span>
+      <span>{{ userName }}</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Tipo de plan:</span>
+      <span>{{ planName }}</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Se renueva cada:</span>
+      <input
+        type="number"
+        [(ngModel)]="selectedMonths"
+        (input)="calculateTotalPrice()"
+        min="1"
+        max="12"
+        class="month-input"
+      />
+      <span>mes(es)</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Precio:</span>
+      <span>$ {{ totalPrice | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="payment-method">
+      <span>Método de pago:</span>
+      <img src="assets/images/payments/paypal_logo.png" alt="Paypal" class="paypal-image">
+      <span class="secure-text">Seguro</span>
+    </div>
+
+    <button class="subscribe-button" (click)="confirmSubscription()">Siguiente</button>
+    <p class="support-text">Esta suscripción apoya de forma directa a {{ userName }}.</p>
+  </div>
+</div>

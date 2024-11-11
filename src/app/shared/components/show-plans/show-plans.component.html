@@ -8,7 +8,10 @@
         <span class="per-month">/mensual</span>
       </div>
       <p class="plan-description">{{ plan.description }}</p>
-      <button (click)="subscribeToPlan(plan.id)" class="subscribe-button">Seleccionar</button>
+      <button (click)="subscribeToPlan(plan)" class="subscribe-button">Suscribirse</button>
     </div>
   </div>
+</div>
+<div *ngIf="isPopupVisible">
+  <app-subscription (popupClosed)="isPopupVisible = false"></app-subscription>
 </div>

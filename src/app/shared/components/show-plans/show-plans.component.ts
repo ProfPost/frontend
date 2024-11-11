@@ -1,24 +1,31 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {DecimalPipe, NgForOf} from '@angular/common';
+import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
 import {ShowPlan} from '../../models/show-plan.model';
 import {ShowPlanService} from '../../../core/services/show-plan.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import {SubscriptionComponent} from '../subscription/subscription.component';
 
 @Component({
   selector: 'app-show-plans',
   standalone: true,
   imports: [
     NgForOf,
-    DecimalPipe
+    DecimalPipe,
+    SubscriptionComponent,
+    NgIf
   ],
   templateUrl: './show-plans.component.html',
   styleUrl: './show-plans.component.css'
 })
 export class ShowPlansComponent implements OnInit{
   plans: ShowPlan[] = [];
+  isPopupVisible: boolean = false;
+  selectedPlan!: ShowPlan;
 
   private snackBar = inject(MatSnackBar);
   private showPlanService = inject(ShowPlanService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.fetchPlans();
@@ -38,7 +45,11 @@ export class ShowPlansComponent implements OnInit{
       duration: 3000,
     });
   }
-  subscribeToPlan(planId: number): void {
-    this.showSnackBar('Funciona!');
+  subscribeToPlan(plan: ShowPlan): void {
+    const selectedUser = JSON.parse(localStorage.getItem('selectedUser') || '{}');
+
+    localStorage.setItem('selectedPlan', JSON.stringify(plan));
+    this.selectedPlan = plan;
+    this.isPopupVisible = true;
   }
 }

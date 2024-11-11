@@ -43,6 +43,14 @@ export class UserProfileComponent implements OnInit {
             this.isOwnProfile = profile.id === userId;
             this.isCreatorProfile = profile.role === 'CREATOR';
             this.showSnackBar('Perfil cargado con éxito');
+
+            if (this.isCreatorProfile) {
+              const selectedUser = {
+                userName: profile.name,
+                userId: profile.id,
+              };
+              localStorage.setItem('selectedUser', JSON.stringify(selectedUser));
+            }
           },
           error: (error) => {
             this.showSnackBar('Error al cargar el perfil');
