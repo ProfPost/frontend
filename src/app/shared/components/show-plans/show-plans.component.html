@@ -13,5 +13,8 @@
   </div>
 </div>
 <div *ngIf="isPopupVisible">
-  <app-subscription (popupClosed)="isPopupVisible = false"></app-subscription>
+  <app-subscription
+    (popupClosed)="isPopupVisible = false"
+    (redirect)="startPaymentProcess()">
+  </app-subscription>
 </div>

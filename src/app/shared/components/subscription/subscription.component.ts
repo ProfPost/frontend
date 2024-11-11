@@ -29,7 +29,11 @@ export class SubscriptionComponent implements OnInit{
   selectedMonths: number = 1;
   totalPrice: number = 0;
 
+  isPopupVisible: boolean = true;
+  isPaymentConfirmationVisible: boolean = false;
+
   @Output() popupClosed = new EventEmitter<void>();
+  @Output() redirect = new EventEmitter<void>();
 
   ngOnInit(): void {
     this.loadSubscriptionData();
@@ -55,7 +59,10 @@ export class SubscriptionComponent implements OnInit{
     this.totalPrice = this.selectedMonths * this.planPrice;
   }
 
-  confirmSubscription(): void {
+  continueSubscription(): void {
+    this.isPopupVisible = false;
+    this.isPaymentConfirmationVisible = true;
+
     const subscriptionData = {
       user_id: this.userId,
       creator_id: this.creatorId,
@@ -63,16 +70,16 @@ export class SubscriptionComponent implements OnInit{
       months: this.selectedMonths,
     };
 
-    this.subscriptionService.subscribe(subscriptionData).subscribe({
-      next: () => {
-        this.snackBar.open('¡Suscripción completada!', 'Cerrar', { duration: 3000 });
-      },
-      error: () => {
-        this.snackBar.open('Error al suscribirse', 'Cerrar', { duration: 3000 });
-      },
-    });
+    localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
   }
+
   closePopup(): void {
+    this.isPopupVisible = false;
+    this.isPaymentConfirmationVisible = false;
     this.popupClosed.emit();
+  }
+
+  redirectToPayPal(): void {
+    this.redirect.emit();
   }
 }

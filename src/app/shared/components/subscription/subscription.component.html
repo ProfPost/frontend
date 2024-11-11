@@ -1,4 +1,5 @@
-<div class="popup-overlay">
+<p>Hola</p>
+<div class="popup-overlay" *ngIf="isPopupVisible">
   <div class="popup">
     <button class="close-button" (click)="closePopup()">×</button>
 
@@ -39,7 +40,27 @@
       <span class="secure-text">Seguro</span>
     </div>
 
-    <button class="subscribe-button" (click)="confirmSubscription()">Siguiente</button>
+    <button class="subscribe-button" (click)="continueSubscription()">Siguiente</button>
     <p class="support-text">Esta suscripción apoya de forma directa a {{ userName }}.</p>
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="isPaymentConfirmationVisible">
+  <div class="popup">
+    <button class="close-button" (click)="closePopup()">×</button>
+    <h3>A un paso de completar tu compra</h3>
+    <p>Resumen total:</p>
+
+    <div class="summary-item">
+      <span>Total:</span>
+      <span>$ {{ totalPrice | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="payment-method">
+      <span>Método de pago:</span>
+      <img src="assets/images/payments/paypal_logo.png" alt="Paypal" class="paypal-image">
+      <span class="secure-text">Seguro</span>
+    </div>
+    <button class="subscribe-button" (click)="redirectToPayPal()">Ir a PayPal</button>
   </div>
 </div>
