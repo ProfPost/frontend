@@ -15,4 +15,7 @@ export class SubscribeService {
   subscribe(subscriptionData: { months: number; user_id: number; creator_id: number }): Observable<any> {
     return this.http.post<any>(`${this.baseURL}`, subscriptionData);
   }
+  isUserSubscribedToCreator(userId: number, creatorId: number): Observable<boolean> {
+    return this.http.get<boolean>('${this.baseURL}/is-subscribed?userId=${userId}&creatorId=${creatorId}')
+  }
 }

@@ -1,6 +1,7 @@
 <div class="plans-container">
-  <h2>Suscribirse</h2>
-  <div class="plans-grid">
+  <h2 *ngIf="!isSubscribed">Suscribirse</h2>
+  <p *ngIf="isSubscribed">Ya estás suscrito a este creador.</p>
+  <div *ngIf="!isSubscribed" class="plans-grid">
     <div *ngFor="let plan of plans" class="plan-card">
       <h3 class="plan-name">{{ plan.name }}</h3>
       <div class="plan-price">
