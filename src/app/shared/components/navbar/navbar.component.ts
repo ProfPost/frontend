@@ -12,10 +12,14 @@ import {AuthService} from '../../../core/services/auth.service';
 export class NavbarComponent {
   private authService = inject(AuthService);
 
+  profileRoute: string | undefined;
+
   isAuthenticated: boolean = false;
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
+    const role = this.authService.getUserRole();
+    this.profileRoute = role === 'CREATOR' ? '/creator/profile' : '/reader/profile';
   }
 
   logout(): void {

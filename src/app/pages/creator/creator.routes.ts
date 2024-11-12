@@ -8,14 +8,16 @@ import {PublicationListComponent} from './publication-management/publication-lis
 import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
 import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
+import {PlaylistComponent} from '../reader/playlist/playlist.component';
 export const creatorroutes: Routes = [
   {
     path: '',
     component: CreatorLayoutComponent,
     children: [
 
-      //{ path: 'profile', component: UserProfileComponent },
+      { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
+      { path: 'playlist', component: PlaylistComponent },
 
       { path: 'publications-catalog', component: PublicationsCatalogComponent },
       //{ path: 'profile/list', component: PublicationListComponent },

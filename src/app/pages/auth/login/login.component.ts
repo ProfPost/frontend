@@ -78,4 +78,9 @@ export class LoginComponent {
       verticalPosition: 'top',
     });
   }
+
+  getUserRole(): string {
+    const role = localStorage.getItem('profpost_auth');
+    return role ? role : 'READER';
+  }
 }

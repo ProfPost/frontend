@@ -46,7 +46,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   navigateToUpdateProfile(): void {
-    this.router.navigate(['/reader/profile/update']);
+    const role = this.authService.getUserRole();
+
+    const route = role === 'CREATOR' ? '/creator/profile/update' : '/reader/profile/update';
+
+    this.router.navigate([route]);
   }
 
   private showSnackBar(message: string): void {
