@@ -2,14 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { UserProfile } from '../../models/user-profile.model';
 import { UserProfileService } from '../../../core/services/user-profile.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
 })

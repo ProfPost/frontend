@@ -1,1 +1,44 @@
-<p>publication-list works!</p>
+@if(publications) {
+  <h2>Publicaciones</h2>
+
+  <div class="table-controls">
+    <mat-form-field class="filter-input" appearance="outline">
+      <mat-label>Buscar por título</mat-label>
+      <input matInput [(ngModel)]="filterText" (input)="applyFilter($event)" />
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="publications && publications.length > 0; else noPublications">
+    <div *ngFor="let publication of publications" class="publication-card">
+      <mat-card>
+        <mat-card-content>
+          <p>{{ publication.creatorname }}</p>
+          <p>{{ publication.title }}</p>
+          <p>{{ publication.content }}</p>
+          <a href="{{ publication.video_url }}" target="_blank">{{ publication.video_url }}</a>
+
+          <div class="button-group">
+            <button mat-raised-button color="accent" (click)="editPublication(publication.id)">
+              Editar
+            </button>
+            <button mat-raised-button color="warn" (click)="deletePublication(publication.id)">
+              Eliminar
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Espacio entre publicaciones -->
+      <div class="spacer"></div>
+    </div>
+  </div>
+
+  <ng-template #noPublications>
+    <p>No hay publicaciones registradas</p>
+  </ng-template>
+
+
+} @else {
+  <p>No hay publicaciones registradas</p>
+}
+

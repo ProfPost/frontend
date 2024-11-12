@@ -93,7 +93,20 @@ export default class PublicationFormComponent {
   }
 
   private loadPublicationForEdit(): void {
-
+    this.publicationService.getPublicationDetailsById(this.publicationId!).subscribe({
+      next: (publication: PublicationDetailsResponse) => {
+        const category = this.categories.find(
+          (cat) => cat.name === publication.categoryname
+        );
+        if (category) {
+          this.form.patchValue({
+            ...publication,
+            category_id: category.id,
+          });
+        }
+      },
+      error: () => this.errors.push('Error al cargar los detalles de la publicación.'),
+    });
   }
 
   private loadCreatorId(): void {
@@ -147,7 +160,7 @@ export default class PublicationFormComponent {
         this.snackBar.open('Publicación guardada exitosamente', 'Cerrar', {
           duration: 3000,
         });
-        this.router.navigate(['/creator/publications/list']);
+        this.router.navigate(['/creator/publications-catalog']);
       },
       error: (error) => {
         this.errors = error.error.errors || ['Error al guardar la publicación'];
@@ -157,7 +170,4 @@ export default class PublicationFormComponent {
       },
     });
   }
-
-
-
 }

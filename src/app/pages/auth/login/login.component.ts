@@ -56,9 +56,13 @@ export class LoginComponent {
     const credentials: AuthRequest = this.loginForm.value;
 
     this.authService.login(credentials).subscribe({
-      next: () => {
+      next: (user) => {
         this.showSnackBar('Inicio de Sesión Existoso');
-        this.router.navigate(['/reader']);
+        if (user.role === 'READER') {
+          this.router.navigate(['/reader']);
+        } else if (user.role === 'CREATOR') {
+          this.router.navigate(['/creator']);
+        }
       },
       error: () => {
         this.showSnackBar(
