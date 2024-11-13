@@ -147,7 +147,7 @@ export default class PublicationFormComponent {
         this.snackBar.open('Publicación guardada exitosamente', 'Cerrar', {
           duration: 3000,
         });
-        this.router.navigate(['/creator/publications/list']);
+        this.router.navigate(['/creator/publications-catalog']);
       },
       error: (error) => {
         this.errors = error.error.errors || ['Error al guardar la publicación'];

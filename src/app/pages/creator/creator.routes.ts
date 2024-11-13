@@ -8,6 +8,7 @@ import {PublicationListComponent} from './publication-management/publication-lis
 import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
 import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
+
 export const creatorroutes: Routes = [
   {
     path: '',
