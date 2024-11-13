@@ -59,9 +59,9 @@ export class LoginComponent {
       next: (user) => {
         this.showSnackBar('Inicio de Sesión Existoso');
         if (user.role === 'READER') {
-          this.router.navigate(['/reader']);
+          this.router.navigate(['/reader/publications-catalog']);
         } else if (user.role === 'CREATOR') {
-          this.router.navigate(['/creator']);
+          this.router.navigate(['/creator/publications-catalog']);
         }
       },
       error: () => {

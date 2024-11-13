@@ -79,15 +79,6 @@ export class PublicationListComponent implements OnInit{
     });
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
-    this.filteredPublications = this.publications.filter((publication) =>
-      publication.title.toLowerCase().includes(filterValue)
-    );
-  }
-
   editPublication(publicationId: number): void {
     this.router.navigate(['/creator/publications/edit', publicationId]);
   }

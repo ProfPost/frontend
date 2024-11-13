@@ -19,7 +19,7 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
     const role = this.authService.getUserRole();
-    this.profileRoute = role === 'CREATOR' ? '/creator/profile' : '/reader/profile';
+    this.profileRoute = role === 'CREATOR' ? '/creator/profile/list' : '/reader/profile';
   }
 
   logout(): void {

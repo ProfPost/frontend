@@ -1,12 +1,5 @@
 @if(publications) {
-  <h2>Publicaciones</h2>
-
-  <div class="table-controls">
-    <mat-form-field class="filter-input" appearance="outline">
-      <mat-label>Buscar por título</mat-label>
-      <input matInput [(ngModel)]="filterText" (input)="applyFilter($event)" />
-    </mat-form-field>
-  </div>
+  <h3>Publicaciones</h3>
 
   <div *ngIf="publications && publications.length > 0; else noPublications">
     <div *ngFor="let publication of publications" class="publication-card">
@@ -18,11 +11,11 @@
           <a href="{{ publication.video_url }}" target="_blank">{{ publication.video_url }}</a>
 
           <div class="button-group">
-            <button mat-raised-button color="accent" (click)="editPublication(publication.id)">
-              Editar
+            <button mat-icon-button color="accent" (click)="editPublication(publication.id)">
+              <i class="fas fa-light fa-pen-to-square"></i>
             </button>
-            <button mat-raised-button color="warn" (click)="deletePublication(publication.id)">
-              Eliminar
+            <button mat-icon-button color="warn" (click)="deletePublication(publication.id)">
+              <i class="fas fa-regular fa-trash"></i>
             </button>
           </div>
         </mat-card-content>
