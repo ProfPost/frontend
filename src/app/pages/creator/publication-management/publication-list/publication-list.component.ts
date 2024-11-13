@@ -84,6 +84,15 @@ export class PublicationListComponent implements OnInit{
   }
 
   deletePublication(publicationId: number): void {
+    if (confirm('¿Estás seguro de que deseas eliminar este libro?')) {
+      this.publicationService.deletePublication(publicationId).subscribe({
+        next: () => {
+          this.showSnackBar('Libro eliminado exitosamente');
+          this.loadPublications(this.pageIndex, this.pageSize);
+        },
+        error: () => this.showSnackBar('Error al eliminar el libro'),
+      });
+    }
   }
 
   private showSnackBar(message: string): void {

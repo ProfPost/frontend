@@ -28,4 +28,9 @@ export class PublicationService {
   getPublicationDetails(): Observable<PublicationDetailsResponse[]> {
     return this.http.get<PublicationDetailsResponse[]>(`${this.baseURL}`);
   }
+
+  deletePublication(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/creators/${id}`);
+  }
+
 }
