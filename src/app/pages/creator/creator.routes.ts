@@ -7,8 +7,9 @@ import { CategoryListComponent } from './category-management/category-list/categ
 import {PublicationListComponent} from './publication-management/publication-list/publication-list.component';
 import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
-import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
+import {HomeComponent} from '../home/home.component';
 import {PlaylistComponent} from '../reader/playlist/playlist.component';
+import {SearcherComponent} from '../reader/searcher/searcher.component';
 
 export const creatorroutes: Routes = [
   {
@@ -18,25 +19,22 @@ export const creatorroutes: Routes = [
 
       { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
+      { path: 'publications-catalog', component: HomeComponent },
       { path: 'playlist', component: PlaylistComponent },
-
-      { path: 'publications-catalog', component: PublicationsCatalogComponent },
-      //{ path: 'profile/list', component: PublicationListComponent },
-
       { path: 'publications/new', component: PublicationFormComponent },
+      { path: 'publications/list', component: PublicationListComponent },
+      { path: 'playlist', component: PlaylistComponent },
       { path: 'publications/edit/:id', component: PublicationFormComponent },
-
       { path: 'category/new', component: CategoryFormComponent },
       { path: 'category/edit/:id', component: CategoryFormComponent },
       { path: 'category/list', component: CategoryListComponent },
+      { path: 'search', component: SearcherComponent },
 
       { path: 'profile', component: UserProfileComponent,
         children: [
           { path: 'list', component: PublicationListComponent },
         ]
       },
-
-
 ],
   },
 ];

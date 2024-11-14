@@ -5,5 +5,6 @@ export interface PurchaseResponse {
   createdAt: string;
   userId: number;
   subscriptionId: number;
+  months: number;
   donationId?: number | null;
 }

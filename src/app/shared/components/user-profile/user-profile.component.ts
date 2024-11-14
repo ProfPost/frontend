@@ -88,7 +88,14 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  clearSelectedUser(): void {
+  navigateBack(): void {
+    const role = this.authService.getUserRole();
+    if (role === 'READER') {
+      this.router.navigate(['/reader/search']);
+    } else (role === 'CREATOR')
+    {
+      this.router.navigate(['/creator/search']);
+    }
     localStorage.removeItem('selectedUser');
     localStorage.removeItem('selectedPlan');
     localStorage.removeItem('subscriptionData');

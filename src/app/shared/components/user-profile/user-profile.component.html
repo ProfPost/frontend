@@ -1,7 +1,7 @@
 <div class="container-background">
   <!-- Contenedor del perfil -->
   <div class="profile-container" *ngIf="profile">
-    <a href="/reader/search" class="back-button" (click)="clearSelectedUser()">
+    <a class="back-button" (click)="navigateBack()">
       <i class="fas fa-arrow-left"></i> {{ profile.name }}
     </a>
 
@@ -25,4 +25,3 @@
     </div>
   </div>
 </div>
-
