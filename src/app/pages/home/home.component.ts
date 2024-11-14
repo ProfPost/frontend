@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,8 +13,6 @@ import {PublicationDetailsResponse} from '../../shared/models/publication-detail
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterOutlet,
-    NavbarComponent,
     FooterComponent,
     MatCardModule,
     MatFormFieldModule,

@@ -4,11 +4,10 @@ import { UserProfileComponent } from '../../shared/components/user-profile/user-
 import { UpdateProfileComponent } from '../../shared/components/update-profile/update-profile.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PurchasesComponent } from '../../shared/components/purchases/purchases.component';
-import { PublicationsCatalogComponent } from './publications-catalog/publications-catalog.component';
 import {SearcherComponent} from './searcher/searcher.component';
 import {SubscriptionsComponent} from './subscriptions/subscriptions.component';
-import {SubscriptionComponent} from '../../shared/components/subscription/subscription.component';
 import {ShowPlansComponent} from '../../shared/components/show-plans/show-plans.component';
+import {HomeComponent} from '../home/home.component';
 
 export const readerroutes: Routes = [
   {
@@ -18,7 +17,7 @@ export const readerroutes: Routes = [
       { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
       { path: 'profile/:id', component: UserProfileComponent },
-      { path: 'publications-catalog', component: PublicationsCatalogComponent },
+      { path: 'publications-catalog', component: HomeComponent },
       { path: 'playlist', component: PlaylistComponent },
       { path: 'subscriptions', component: SubscriptionsComponent },
       { path: 'subscription', component: ShowPlansComponent },

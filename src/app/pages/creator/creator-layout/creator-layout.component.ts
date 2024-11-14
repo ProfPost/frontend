@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     NavbarComponent,
-    FooterComponent,
     RouterOutlet,
     RouterLink,
+    FooterComponent,
   ],
   templateUrl: './creator-layout.component.html',
   styleUrl: './creator-layout.component.css'

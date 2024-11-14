@@ -7,7 +7,7 @@ import { CategoryListComponent } from './category-management/category-list/categ
 import {PublicationListComponent} from './publication-management/publication-list/publication-list.component';
 import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
-import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
+import {HomeComponent} from '../home/home.component';
 
 export const creatorroutes: Routes = [
   {
@@ -17,12 +17,9 @@ export const creatorroutes: Routes = [
 
       { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
-      { path: 'publications-catalog', component: PublicationsCatalogComponent },
-
+      { path: 'publications-catalog', component: HomeComponent },
       { path: 'publications/new', component: PublicationFormComponent },
-
       { path: 'publications/list', component: PublicationListComponent },
-
       { path: 'category/new', component: CategoryFormComponent },
       { path: 'category/edit/:id', component: CategoryFormComponent },
       { path: 'category/list', component: CategoryListComponent },
