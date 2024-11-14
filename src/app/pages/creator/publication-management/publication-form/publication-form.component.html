@@ -58,7 +58,7 @@
                     id="fileInput"
                     type="file"
                     class="file-input"
-                    accept="application/pdf"
+                    accept="application/png"
                     (change)="uploadFile($event, 'filePath')"
                 />
                 <div class="small text-muted">
@@ -93,7 +93,7 @@
 
             <!-- Botones de Acción -->
               <div class="action-buttons text-end">
-                <button mat-button type="button" routerLink="/creator/publications-catalog" class="cancelar">
+                <button mat-button type="button" (click)="cancel()" class="cancelar">
                   Cancelar
                 </button>
                 <button mat-raised-button class="crear-publicacion ms-2">
@@ -102,6 +102,5 @@
               </div>
             </form>
         </div>
-
     }
 </div>

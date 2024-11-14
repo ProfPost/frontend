@@ -1,0 +1,89 @@
+.publication-card {
+  margin-bottom: 16px;
+}
+
+.spacer {
+  height: 16px;
+}
+
+h3 {
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+.publication-card mat-card {
+  width: 450px;
+  margin: 16px auto;
+  background-color: #f5f5f5;
+  color: #333333;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.spacer {
+  height: 6px;
+}
+
+.publication-card a {
+  font-size: 1rem;
+  color: #666666;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+
+  .publication-card mat-card {
+    max-width: 50%;
+    padding: 12px;
+  }
+
+  .publication-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .publication-card p {
+    font-size: 0.95rem;
+  }
+
+  .publication-card .button-group button {
+    font-size: 0.85rem;
+  }
+}
+
+.button-group i {
+  font-size: 20px;
+  color: #5c5c5c;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-group button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.button-group button:hover i {
+  color: #333;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
