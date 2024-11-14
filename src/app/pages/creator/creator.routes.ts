@@ -8,8 +8,8 @@ import {PublicationListComponent} from './publication-management/publication-lis
 import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
 import {HomeComponent} from '../home/home.component';
-import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
 import {PlaylistComponent} from '../reader/playlist/playlist.component';
+import {SearcherComponent} from '../reader/searcher/searcher.component';
 
 export const creatorroutes: Routes = [
   {
@@ -28,14 +28,13 @@ export const creatorroutes: Routes = [
       { path: 'category/new', component: CategoryFormComponent },
       { path: 'category/edit/:id', component: CategoryFormComponent },
       { path: 'category/list', component: CategoryListComponent },
+      { path: 'search', component: SearcherComponent },
 
       { path: 'profile', component: UserProfileComponent,
         children: [
           { path: 'list', component: PublicationListComponent },
         ]
       },
-
-
 ],
   },
 ];

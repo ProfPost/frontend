@@ -48,7 +48,6 @@ export default class PublicationFormComponent {
   private categoryService = inject(CategoryService);
   private userSearchService = inject(UserSearchService);
   private authService = inject(AuthService);
-  private userSearchService = inject(UserSearchService);
 
   private fb = inject(FormBuilder);
   private router = inject(Router);

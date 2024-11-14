@@ -45,7 +45,7 @@ export class PurchasesComponent implements OnInit{
     this.subscriptionService.subscribe(subscriptionData).subscribe({
       next: (response: SubscriptionResponse) => {
         localStorage.setItem('subscriptionResponse', JSON.stringify(response));
-        this.createPurchase(response.subscriptionId, response.userId);
+        this.createPurchase(response.subscriptionId, response.userId, subscriptionData.months);
       },
       error: () => {
         this.loading = false;
@@ -55,8 +55,8 @@ export class PurchasesComponent implements OnInit{
     });
   }
 
-  private createPurchase(subscriptionId: number, userId: number): void {
-    this.purchaseService.createPurchase({ user_id: userId, subscription_id: subscriptionId }).subscribe({
+  private createPurchase(subscriptionId: number, userId: number, months: number): void {
+    this.purchaseService.createPurchase({ user_id: userId, subscription_id: subscriptionId, months:months }).subscribe({
       next: (purchaseResponse: PurchaseResponse) => {
         localStorage.setItem('purchaseResponse', JSON.stringify(purchaseResponse));
         this.createCheckout(purchaseResponse.id);

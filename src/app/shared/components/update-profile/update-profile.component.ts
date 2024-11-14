@@ -72,7 +72,7 @@ export class UpdateProfileComponent {
           next: () => {
             this.showSnackBar('Perfil actualizado exitosamente');
             const role = this.authService.getUserRole();
-            const route = role === 'CREATOR' ? '/creator/profile' : '/reader/profile';
+            const route = role === 'CREATOR' ? '/creator/profile/list' : '/reader/profile';
 
             this.router.navigate([route]);
           },
