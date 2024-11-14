@@ -21,7 +21,6 @@ export const creatorroutes: Routes = [
       { path: 'playlist', component: PlaylistComponent },
 
       { path: 'publications-catalog', component: PublicationsCatalogComponent },
-      //{ path: 'profile/list', component: PublicationListComponent },
 
       { path: 'publications/new', component: PublicationFormComponent },
       { path: 'publications/edit/:id', component: PublicationFormComponent },
