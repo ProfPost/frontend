@@ -58,7 +58,7 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe({
       next: () => {
         this.showSnackBar('Inicio de Sesión Existoso');
-        this.router.navigate(['/reader']);
+        this.router.navigate(['/reader/publications-catalog']);
       },
       error: () => {
         this.showSnackBar(

@@ -1,0 +1,67 @@
+/* Estilos generales */
+.content-wrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #E5E8D8; /* Color de fondo para asegurar consistencia */
+  }
+  
+  /* Estilo de la barra de búsqueda */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Estilos para la lista de publicaciones */
+  .publication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .publication-card {
+    width: 100%;
+    background-color: #E5E8D8; /* Color de fondo */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .publication-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  mat-card-header mat-card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  mat-card-header mat-card-subtitle {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  mat-card-content p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #444;
+  }
+  
+  mat-card-image {
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 0 0 10px 10px;
+  }
+  
+
+  
