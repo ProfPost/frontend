@@ -11,10 +11,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a href="#home" class="nav-link" routerLink="/home">Home</a>
-        </li>
+
         @if (!isAuthenticated) {
+          <li class="nav-item">
+            <a href="#home" class="nav-link" routerLink="/home">Home</a>
+          </li>
 
         <li class="nav-item ms-3">
           <a
