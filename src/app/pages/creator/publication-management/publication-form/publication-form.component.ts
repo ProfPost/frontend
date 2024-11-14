@@ -17,6 +17,7 @@ import { ApiImgPipe } from '../../../../core/pipes/api-img.pipe';
 import { PublicationService } from '../../../../core/services/publication.service';
 import { MediaService } from '../../../../core/services/media.service';
 import { CategoryService } from '../../../../core/services/category.service';
+import { UserSearchService } from '../../../../core/services/user-search.service';
 import { AuthService } from '../../../../core/services/auth.service';
 
 import { CategoryResponse } from '../../../../shared/models/category-response.model';
@@ -48,7 +49,7 @@ export default class PublicationFormComponent {
   private mediaService = inject(MediaService);
   private categoryService = inject(CategoryService);
   private authService = inject(AuthService);
-
+  private userSearchService = inject(UserSearchService);
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
@@ -113,7 +114,7 @@ export default class PublicationFormComponent {
     const userId = this.authService.getUser()?.id; // Puedes obtener esto de otra forma si no quieres usar `getUser`
 
     if (userId) {
-      this.authService.getCreatorId(userId).subscribe({
+      this.userSearchService.getCreatorId(userId).subscribe({
         next: (creatorId) => {
           this.form.patchValue({ creator_id: creatorId });
         },

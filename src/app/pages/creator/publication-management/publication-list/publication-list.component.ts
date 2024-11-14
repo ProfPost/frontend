@@ -75,12 +75,18 @@ export class PublicationListComponent implements OnInit{
 
         console.log(this.publications);
       },
-      error: () => this.showSnackBar('Error al cargar la lista de libros'),
+      error: () => this.showSnackBar('Error al cargar la lista de publicaciones'),
     });
   }
 
   editPublication(publicationId: number): void {
     this.router.navigate(['/creator/publications/edit', publicationId]);
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadPublications(this.pageIndex, this.pageSize);
   }
 
   deletePublication(publicationId: number): void {
