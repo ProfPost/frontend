@@ -24,11 +24,8 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/m
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ApiImgPipe,
-    MatCardHeader,
     MatCardContent,
     MatCard,
-    MatCardActions,
   ],
   templateUrl: './publication-list.component.html',
   styleUrls: ['./publication-list.component.css'],
@@ -75,7 +72,7 @@ export class PublicationListComponent implements OnInit{
 
         console.log(this.publications);
       },
-      error: () => this.showSnackBar('Error al cargar la lista de libros'),
+      error: () => this.showSnackBar('Error al cargar la lista de publicaciones'),
     });
   }
 
