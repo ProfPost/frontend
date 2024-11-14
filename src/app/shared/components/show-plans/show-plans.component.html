@@ -1,0 +1,21 @@
+<div class="plans-container">
+  <h2 *ngIf="!isSubscribed">Suscribirse</h2>
+  <p *ngIf="isSubscribed">Ya estás suscrito a este creador.</p>
+  <div *ngIf="!isSubscribed" class="plans-grid">
+    <div *ngFor="let plan of plans" class="plan-card">
+      <h3 class="plan-name">{{ plan.name }}</h3>
+      <div class="plan-price">
+        <span class="currency-symbol">$</span>{{ plan.price }}
+        <span class="per-month">/mensual</span>
+      </div>
+      <p class="plan-description">{{ plan.description }}</p>
+      <button (click)="subscribeToPlan(plan)" class="subscribe-button">Suscribirse</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="isPopupVisible">
+  <app-subscription
+    (popupClosed)="isPopupVisible = false"
+    (redirect)="startPaymentProcess()">
+  </app-subscription>
+</div>
