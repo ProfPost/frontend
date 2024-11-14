@@ -33,4 +33,9 @@ export class PublicationService {
     return this.http.delete<void>(`${this.baseURL}/creators/${id}`);
   }
 
+  getPublicationsByCreator(creatorId: number): Observable<PublicationDetailsResponse[]> {
+    return this.http.get<PublicationDetailsResponse[]>(`${this.baseURL}/by-creator`, {
+      params: {creatorId: creatorId.toString()}
+    });
+  }
 }

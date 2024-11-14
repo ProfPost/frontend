@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserSearchService } from '../../../../core/services/user-search.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 import { ApiImgPipe } from '../../../../core/pipes/api-img.pipe';
 import {PublicationDetailsResponse} from '../../../../shared/models/publication-details-response.model';
@@ -51,30 +53,44 @@ export class PublicationListComponent implements OnInit{
   private snackBar = inject(MatSnackBar);
   private publicationService = inject(PublicationService);
   private router = inject(Router);
-
+  private userSearchService = inject(UserSearchService);
+  private authService = inject(AuthService);
   ngOnInit(): void {
     this.loadPublications();
   }
 
   loadPublications(pageIndex: number = 0, pageSize: number = 5): void {
-    this.publicationService.getPublicationDetails().subscribe({
-      next: (response: PublicationDetailsResponse[]) => {
-        // Paginación en el frontend
-        const start = pageIndex * pageSize;
-        const end = start + pageSize;
+    // Obtiene el ID del usuario actual
+    const userId = this.authService.getUser()?.id;
 
-        this.publications = response.slice(start, end);
-        this.filteredPublications = this.publications;
+    if (userId) {
+      // Obtiene el creatorId correspondiente al userId
+      this.userSearchService.getCreatorId(userId).subscribe({
+        next: (creatorId) => {
+          // Llama al servicio para obtener las publicaciones solo de ese creatorId
+          this.publicationService.getPublicationsByCreator(creatorId).subscribe({
+            next: (response: PublicationDetailsResponse[]) => {
+              // Aplica la paginación en el frontend
+              const start = pageIndex * pageSize;
+              const end = start + pageSize;
 
-        this.totalElements = response.length;
-        this.pageSize = pageSize;
-        this.pageIndex = pageIndex;
+              this.publications = response.slice(start, end);
+              this.filteredPublications = this.publications;
 
-        console.log(this.publications);
-      },
-      error: () => this.showSnackBar('Error al cargar la lista de publicaciones'),
-    });
+              this.totalElements = response.length;
+              this.pageSize = pageSize;
+              this.pageIndex = pageIndex;
+
+              console.log(this.publications);
+            },
+            error: () => this.showSnackBar('Error al cargar la lista de publicaciones del creador')
+          });
+        },
+        error: () => this.showSnackBar('Error al obtener el ID del creador')
+      });
+    }
   }
+
 
   editPublication(publicationId: number): void {
     this.router.navigate(['/creator/publications/edit', publicationId]);
