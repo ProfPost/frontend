@@ -80,7 +80,22 @@ export class PublicationListComponent implements OnInit{
     this.router.navigate(['/creator/publications/edit', publicationId]);
   }
 
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadPublications(this.pageIndex, this.pageSize);
+  }
+
   deletePublication(publicationId: number): void {
+    if (confirm('¿Estás seguro de que deseas eliminar este libro?')) {
+      this.publicationService.deletePublication(publicationId).subscribe({
+        next: () => {
+          this.showSnackBar('Libro eliminado exitosamente');
+          this.loadPublications(this.pageIndex, this.pageSize);
+        },
+        error: () => this.showSnackBar('Error al eliminar el libro'),
+      });
+    }
   }
 
   private showSnackBar(message: string): void {

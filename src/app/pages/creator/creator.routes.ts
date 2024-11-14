@@ -20,6 +20,7 @@ export const creatorroutes: Routes = [
       { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
       { path: 'publications-catalog', component: HomeComponent },
+      { path: 'playlist', component: PlaylistComponent },
       { path: 'publications/new', component: PublicationFormComponent },
       { path: 'publications/list', component: PublicationListComponent },
       { path: 'playlist', component: PlaylistComponent },
