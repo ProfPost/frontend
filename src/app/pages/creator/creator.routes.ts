@@ -9,6 +9,7 @@ import {UserProfileComponent} from '../../shared/components/user-profile/user-pr
 import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
 import {PublicationsCatalogComponent} from '../reader/publications-catalog/publications-catalog.component';
 import {PlaylistComponent} from '../reader/playlist/playlist.component';
+
 export const creatorroutes: Routes = [
   {
     path: '',

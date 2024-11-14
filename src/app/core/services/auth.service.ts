@@ -16,7 +16,8 @@ export class AuthService {
   private http = inject(HttpClient);
   private storageService = inject(StorageService);
 
-  constructor() {}
+  constructor() {
+  }
 
   login(authRequest: AuthRequest): Observable<AuthResponse> {
     return this.http
@@ -49,7 +50,4 @@ export class AuthService {
     return user ? user.role : null;
   }
 
-  getCreatorId(userId: number): Observable<number> {
-    return this.http.get<number>(`${this.baseURL}/creator-id`, { params: { userId: userId.toString() } });
-  }
 }

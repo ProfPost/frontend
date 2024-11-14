@@ -12,8 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-
-import { ApiImgPipe } from '../../../../core/pipes/api-img.pipe';
+import { Location } from '@angular/common';
 import { PublicationService } from '../../../../core/services/publication.service';
 import { MediaService } from '../../../../core/services/media.service';
 import { CategoryService } from '../../../../core/services/category.service';
@@ -32,7 +31,6 @@ import {NgForOf, NgIf} from '@angular/common';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    ApiImgPipe,
     RouterModule,
     MatFormFieldModule,
     MatInputModule,
@@ -48,6 +46,7 @@ export default class PublicationFormComponent {
   private publicationService = inject(PublicationService);
   private mediaService = inject(MediaService);
   private categoryService = inject(CategoryService);
+  private userSearchService = inject(UserSearchService);
   private authService = inject(AuthService);
   private userSearchService = inject(UserSearchService);
 
@@ -55,6 +54,7 @@ export default class PublicationFormComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private snackBar = inject(MatSnackBar);
+  private location = inject(Location);
 
   categories: CategoryResponse[] = [];
   errors: string[] = [];
@@ -73,7 +73,7 @@ export default class PublicationFormComponent {
     creator_id: ['', Validators.required],
     filePath: [
       '',
-      [Validators.required, Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
+      [Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
     ],
   });
 
@@ -111,7 +111,7 @@ export default class PublicationFormComponent {
   }
 
   private loadCreatorId(): void {
-    const userId = this.authService.getUser()?.id; // Puedes obtener esto de otra forma si no quieres usar `getUser`
+    const userId = this.authService.getUser()?.id;
 
     if (userId) {
       this.userSearchService.getCreatorId(userId).subscribe({
@@ -170,5 +170,8 @@ export default class PublicationFormComponent {
         });
       },
     });
+  }
+  cancel(): void {
+    this.location.back();
   }
 }

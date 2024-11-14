@@ -1,3 +1,3 @@
 export interface UserSearchRequest {
-    search: string;
+  search: string;
 }
