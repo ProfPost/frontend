@@ -14,7 +14,7 @@
         <p class="biography">{{ profile.biography }}</p>
         <br />
         <br />
-        <button (click)="navigateToUpdateProfile()" class="update-button">
+        <button *ngIf="isOwnProfile" (click)="navigateToUpdateProfile()" class="update-button">
           Editar Perfil
         </button>
       </div>
