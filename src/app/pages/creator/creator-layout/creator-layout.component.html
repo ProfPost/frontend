@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<app-navbar />
+
+<div class="container-layout">
+  <!-- Sidebar con opciones específicas -->
+  <div class="sidebar" [class.collapsed]="!isSidebarActive">
+    <div class="logo">
+      <img src="assets/images/intro-nav/logo.png" alt="Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li>
+        <li>
+          <a routerLink="publications-catalog" routerLinkActive="active">
+            <i class="fas fa-home"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <button mat-icon-button (click)="createNewPublication()">
+            <i class="fas fa-square-plus"></i> Publicar
+          </button>
+        </li>
+        <li>
+          <a routerLink="record" routerLinkActive="active">
+            <i class="fas fa-history"></i> Historial
+          </a>
+        </li>
+        <li>
+          <a routerLink="playlist" routerLinkActive="active">
+            <i class="fas fa-play-circle"></i> Playlist
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="main-content">
+    <button class="sidebar-toggle-btn" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+</div>
