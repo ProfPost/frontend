@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 export class UpdateProfileComponent {
   profileForm: FormGroup;
   profile!: UserProfile;
+  profileRoute: string | undefined;
 
   private fb = inject(FormBuilder);
   private userProfileService = inject(UserProfileService);
@@ -70,7 +71,10 @@ export class UpdateProfileComponent {
         .subscribe({
           next: () => {
             this.showSnackBar('Perfil actualizado exitosamente');
-            this.router.navigate(['/reader/profile']);
+            const role = this.authService.getUserRole();
+            const route = role === 'CREATOR' ? '/creator/profile' : '/reader/profile';
+
+            this.router.navigate([route]);
           },
           error: (error) => {
             this.showSnackBar(

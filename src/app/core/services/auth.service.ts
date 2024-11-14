@@ -16,7 +16,8 @@ export class AuthService {
   private http = inject(HttpClient);
   private storageService = inject(StorageService);
 
-  constructor() {}
+  constructor() {
+  }
 
   login(authRequest: AuthRequest): Observable<AuthResponse> {
     return this.http

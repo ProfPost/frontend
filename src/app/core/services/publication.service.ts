@@ -25,4 +25,7 @@ export class PublicationService {
     return this.http.put<PublicationDetailsResponse>(`${this.baseURL}/creators/${id}`, publication);
   }
 
+  getPublicationDetails(): Observable<PublicationDetailsResponse[]> {
+    return this.http.get<PublicationDetailsResponse[]>(`${this.baseURL}`);
+  }
 }

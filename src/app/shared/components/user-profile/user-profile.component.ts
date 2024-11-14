@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { UserProfile } from '../../models/user-profile.model';
 import { UserProfileService } from '../../../core/services/user-profile.service';
 import { AuthService } from '../../../core/services/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import {ShowPlansComponent} from '../show-plans/show-plans.component';
@@ -10,7 +10,7 @@ import {ShowPlansComponent} from '../show-plans/show-plans.component';
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, ShowPlansComponent],
+  imports: [CommonModule, RouterOutlet, ShowPlansComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
 })
@@ -35,12 +35,12 @@ export class UserProfileComponent implements OnInit {
 
     this.route.paramMap.subscribe((params) => {
       const profileId = Number(params.get('id'));
-
       if (profileId) {
         this.userProfileService.getUserProfile(profileId).subscribe({
           next: (profile) => {
             this.profile = profile;
             this.isOwnProfile = profile.id === userId;
+            this.showSnackBar('Perfil cargado con éxito');
             this.isCreatorProfile = profile.role === 'CREATOR';
             this.showSnackBar('Perfil cargado con éxito');
 
@@ -75,7 +75,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   navigateToUpdateProfile(): void {
-    this.router.navigate(['/reader/profile/update']);
+    const role = this.authService.getUserRole();
+
+    const route = role === 'CREATOR' ? '/creator/profile/update' : '/reader/profile/update';
+
+    this.router.navigate([route]);
   }
 
   private showSnackBar(message: string): void {
