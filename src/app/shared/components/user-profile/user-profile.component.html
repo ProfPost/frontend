@@ -1,7 +1,7 @@
 <div class="container-background">
   <!-- Contenedor del perfil -->
   <div class="profile-container" *ngIf="profile">
-    <a href="#" class="back-button">
+    <a href="/reader/search" class="back-button" (click)="clearSelectedUser()">
       <i class="fas fa-arrow-left"></i> {{ profile.name }}
     </a>
 
@@ -20,7 +20,9 @@
       </div>
     </div>
     <router-outlet></router-outlet>
-
+    <div class="plans-section">
+      <app-show-plans *ngIf="isCreatorProfile && !isOwnProfile"></app-show-plans>
+    </div>
   </div>
 </div>
 

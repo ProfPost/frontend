@@ -100,3 +100,10 @@
 .update-button:hover {
   background-color: #065c32;
 }
+
+.plans-section {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e5e8d8;
+  border-radius: 8px;
+}

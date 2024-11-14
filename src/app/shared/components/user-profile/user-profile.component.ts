@@ -5,17 +5,19 @@ import { AuthService } from '../../../core/services/auth.service';
 import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import {ShowPlansComponent} from '../show-plans/show-plans.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ShowPlansComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
 })
 export class UserProfileComponent implements OnInit {
   profile!: UserProfile;
   isOwnProfile: boolean = false;
+  isCreatorProfile: boolean = false;
 
   private userProfileService = inject(UserProfileService);
   private authService = inject(AuthService);
@@ -39,6 +41,16 @@ export class UserProfileComponent implements OnInit {
             this.profile = profile;
             this.isOwnProfile = profile.id === userId;
             this.showSnackBar('Perfil cargado con éxito');
+            this.isCreatorProfile = profile.role === 'CREATOR';
+            this.showSnackBar('Perfil cargado con éxito');
+
+            if (this.isCreatorProfile) {
+              const selectedUser = {
+                userName: profile.name,
+                userId: profile.id,
+              };
+              localStorage.setItem('selectedUser', JSON.stringify(selectedUser));
+            }
           },
           error: (error) => {
             this.showSnackBar('Error al cargar el perfil');
@@ -74,5 +86,11 @@ export class UserProfileComponent implements OnInit {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
     });
+  }
+
+  clearSelectedUser(): void {
+    localStorage.removeItem('selectedUser');
+    localStorage.removeItem('selectedPlan');
+    localStorage.removeItem('subscriptionData');
   }
 }

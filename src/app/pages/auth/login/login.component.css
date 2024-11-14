@@ -90,11 +90,14 @@
 .register-link {
   margin-top: 15px;
   font-size: 14px;
+  text-align: center;
 }
 
 .register-link a {
   color: #000000;
   text-decoration: none;
+  display: block;
+  margin: 5px 0;
 }
 
 .register-link a:hover {
