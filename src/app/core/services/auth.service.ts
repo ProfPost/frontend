@@ -49,7 +49,4 @@ export class AuthService {
     return user ? user.role : null;
   }
 
-  getCreatorId(userId: number): Observable<number> {
-    return this.http.get<number>(`${this.baseURL}/creator-id`, { params: { userId: userId.toString() } });
-  }
 }
