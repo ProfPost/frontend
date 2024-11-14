@@ -90,10 +90,10 @@ h3 {
 
 
 ::ng-deep .mat-mdc-paginator {
-    background-color: #f5f5f5;
-    color: #333;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
 }
