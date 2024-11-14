@@ -13,6 +13,7 @@ export const readerroutes: Routes = [
     children: [
       { path: 'profile', component: UserProfileComponent },
       { path: 'profile/update', component: UpdateProfileComponent },
+      { path: 'profile/:id', component: UserProfileComponent },
       { path: 'publications-catalog', component: PublicationsCatalogComponent },
       { path: 'playlist', component: PlaylistComponent },
       { path: 'purchases', component: PurchasesComponent },
