@@ -80,6 +80,12 @@ export class PublicationListComponent implements OnInit{
     this.router.navigate(['/creator/publications/edit', publicationId]);
   }
 
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadPublications(this.pageIndex, this.pageSize);
+  }
+
   deletePublication(publicationId: number): void {
   }
 

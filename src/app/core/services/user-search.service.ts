@@ -6,18 +6,18 @@ import {UserSearchRequest} from '../../shared/models/user-search-request.model';
 import {UserSearchResponse} from '../../shared/models/user-search-response.model';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class UserSearchService {
-  private baseURL = `${environment.baseURL}/user/search`;
+    private baseURL = `${environment.baseURL}/user/search`;
 
-  private http = inject(HttpClient);
+    private http = inject(HttpClient);
 
-  searchUsers(search: UserSearchRequest): Observable<UserSearchResponse[]> {
-    return this.http.get<UserSearchResponse[]>(`${this.baseURL}/${search.search}`);
-  }
+    searchUsers(search: UserSearchRequest): Observable<UserSearchResponse[]> {
+        return this.http.get<UserSearchResponse[]>(`${this.baseURL}/${search.search}`);
+    }
 
-  getCreatorId(userId: number): Observable<number> {
-    return this.http.get<number>(`${this.baseURL}/creator-id`, { params: { userId: userId.toString() } });
-  }
+    getCreatorId(userId: number): Observable<number> {
+        return this.http.get<number>(`${this.baseURL}/creator-id`, { params: { userId: userId.toString() } });
+    }
 }
