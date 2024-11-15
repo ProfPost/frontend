@@ -9,7 +9,6 @@ export const routes: Routes = [
     redirectTo: 'auth/login',
     pathMatch: 'full',
   },
-  { path: 'home', component: HomeComponent },
   {
     path: 'auth',
     loadChildren: () =>

@@ -92,7 +92,7 @@ export class UserProfileComponent implements OnInit {
     const role = this.authService.getUserRole();
     if (role === 'READER') {
       this.router.navigate(['/reader/search']);
-    } else (role === 'CREATOR')
+    } else if (role === 'CREATOR')
     {
       this.router.navigate(['/creator/search']);
     }
