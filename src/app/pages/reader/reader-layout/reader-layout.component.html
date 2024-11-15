@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<app-navbar />
+
+<div class="container-layout">
+  <!-- Sidebar con opciones específicas -->
+  <div class="sidebar" [class.collapsed]="!isSidebarActive">
+    <div class="logo">
+      <img src="assets/images/intro-nav/logo.png" alt="Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="publications-catalog" routerLinkActive="active">
+            <i class="fas fa-home"></i> Inicio
+          </a>
+        </li>
+        <li>
+          <a routerLink="subscriptions" routerLinkActive="active">
+            <i class="fas fa-shopping-cart"></i> Suscripciones
+          </a>
+        </li>
+        <li>
+          <a routerLink="playlist" routerLinkActive="active">
+            <i class="fas fa-play-circle"></i> Playlist
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="search" routerLinkActive="active">
+            <i class="fas fa-search"></i> Buscar
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="main-content">
+    <button class="sidebar-toggle-btn" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-footer></app-footer>
