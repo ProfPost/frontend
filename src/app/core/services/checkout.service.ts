@@ -2,8 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {CheckoutResponse} from '../../shared/models/CheckoutResponse.model';
-import {CaptureResponse} from '../../shared/models/CaptureResponse.model';
+import {CheckoutResponse} from '../../shared/models/checkout-response.model';
+import {CaptureResponse} from '../../shared/models/capture-response.model';
 
 @Injectable({
   providedIn: 'root'
