@@ -24,5 +24,4 @@ export class PublicationService {
   updatePublication(id: number, publication: PublicationCreateRequest): Observable<PublicationDetailsResponse> {
     return this.http.put<PublicationDetailsResponse>(`${this.baseURL}/creators/${id}`, publication);
   }
-
 }

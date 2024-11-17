@@ -75,6 +75,7 @@ export default class PublicationFormComponent {
       '',
       [Validators.required, Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
     ],
+    userId: [this.authService.getUser()?.id]
   });
 
   ngOnInit(): void {
@@ -158,7 +159,4 @@ export default class PublicationFormComponent {
       },
     });
   }
-
-
-
 }
