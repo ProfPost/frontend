@@ -1,0 +1,32 @@
+<div class="playlist-container">
+  <!-- Mostrar playlists si existen -->
+  <div *ngIf="playlists.length > 0; else noPlaylists">
+    <div *ngFor="let playlist of playlists" class="playlist-item">
+      <!-- Ícono de la playlist -->
+      <span class="material-icons library-music-icon">library_music</span>
+      <p>{{ playlist.name }}</p>
+
+      <!-- Ícono de editar -->
+      <button (click)="editPlaylist(playlist.id)" class="edit-btn">
+        <span class="material-icons">edit</span>
+      </button>
+
+      <!-- Ícono de eliminar -->
+      <button (click)="deletePlaylist(playlist.id)" class="delete-btn">
+        <span class="material-icons">delete</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay playlists -->
+  <ng-template #noPlaylists>
+    <p class="no-playlists-message">No hay playlists disponibles</p>
+  </ng-template>
+
+  <!-- Botón para ir a la página de crear playlist -->
+  <div class="create-playlist">
+    <button (click)="goToCreatePlaylist()" class="create-playlist-btn">
+      Crear Playlist
+    </button>
+  </div>
+</div>

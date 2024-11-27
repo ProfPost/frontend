@@ -1,0 +1,139 @@
+.playlist-container {
+  padding: 40px;
+  background-color: #e5e8d8;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Estilo de la lista de playlists */
+div.playlist-container > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 20px;
+  justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 60px; /* Espacio para asegurar que el botón no se solape */
+}
+
+/* Estilo de los elementos individuales de las playlists */
+.playlist-item {
+  display: flex;
+  flex-direction: row; /* Alinea el icono a la izquierda y el texto a la derecha */
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #e5e8d8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+  max-width: 100%; /* Asegura que los items no se estiren más allá de su contenedor */
+}
+
+/* Efecto al pasar el ratón */
+.playlist-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 2em;
+  margin-right: 10px; /* Espacio entre el icono y el nombre */
+  color: #2d6a4f; /* Verde oscuro */
+}
+
+.playlist-item p {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Estilo del mensaje cuando no hay playlists */
+.no-playlists-message {
+  font-size: 1.2em;
+  color: #888;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+/* Media query para pantallas pequeñas (2 columnas en pantallas más pequeñas) */
+@media (max-width: 768px) {
+  div.playlist-container > div {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 columnas en pantallas más pequeñas */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (1 columna en pantallas muy pequeñas) */
+@media (max-width: 480px) {
+  div.playlist-container > div {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
+}
+
+button.edit-btn {
+  background: none;
+  border: none;
+  color: #087443 ; /* Rojo para el ícono de eliminar */
+  cursor: pointer;
+}
+
+button.edit-btn:hover {
+  color: #45a049; /* Rojo más oscuro al pasar el mouse */
+}
+
+button.delete-btn {
+  background: none;
+  border: none;
+  color: #f44336; /* Rojo para el ícono de eliminar */
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+}
+
+.library-music-icon {
+  font-size: 30px; /* Tamaño del ícono */
+  color: #000000; /* Color verde para el ícono de música */
+  margin-right: 5px; /* Espaciado a la derecha del ícono */
+}
+
+/* Estilo para el botón "Crear Playlist" */
+.create-playlist-btn {
+  background-color: #087443; /* Verde */
+  color: white;
+  padding: 12px 25px; /* Espaciado para hacerlo más grande */
+  font-size: 16px; /* Tamaño de texto */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Efectos de transición */
+  position: absolute;
+  right: 20px; /* Ajuste el valor aquí si es necesario */
+  bottom: 20px; /* Ajuste el valor aquí si es necesario */
+}
+
+.create-playlist-btn:hover {
+  background-color: #45a049; /* Color verde más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de crecimiento */
+}
+
+.create-playlist-btn:active {
+  transform: scale(0.98); /* Efecto al hacer clic */
+}
+
+.create-playlist-btn:focus {
+  outline: none; /* Eliminar el borde del enfoque */
+}
