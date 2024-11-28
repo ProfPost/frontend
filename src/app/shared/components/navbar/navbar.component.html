@@ -11,7 +11,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+
         @if (!isAuthenticated) {
+
 
         <li class="nav-item ms-3">
           <a
@@ -42,7 +44,7 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#" class="dropdown-item" routerLink="/reader/profile">
+              <a href="#" class="dropdown-item" [routerLink]="profileRoute">
                 Ver Perfil
               </a>
             </li>

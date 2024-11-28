@@ -12,8 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-
-import { ApiImgPipe } from '../../../../core/pipes/api-img.pipe';
+import { Location } from '@angular/common';
 import { PublicationService } from '../../../../core/services/publication.service';
 import { MediaService } from '../../../../core/services/media.service';
 import { CategoryService } from '../../../../core/services/category.service';
@@ -32,7 +31,6 @@ import {NgForOf, NgIf} from '@angular/common';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    ApiImgPipe,
     RouterModule,
     MatFormFieldModule,
     MatInputModule,
@@ -55,6 +53,7 @@ export default class PublicationFormComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private snackBar = inject(MatSnackBar);
+  private location = inject(Location);
 
   categories: CategoryResponse[] = [];
   errors: string[] = [];
@@ -73,7 +72,7 @@ export default class PublicationFormComponent {
     creator_id: ['', Validators.required],
     filePath: [
       '',
-      [Validators.required, Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
+      [Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
     ],
     userId: [this.authService.getUser()?.id]
   });
@@ -95,11 +94,24 @@ export default class PublicationFormComponent {
   }
 
   private loadPublicationForEdit(): void {
-
+    this.publicationService.getPublicationDetailsById(this.publicationId!).subscribe({
+      next: (publication: PublicationDetailsResponse) => {
+        const category = this.categories.find(
+          (cat) => cat.name === publication.categoryname
+        );
+        if (category) {
+          this.form.patchValue({
+            ...publication,
+            category_id: category.id,
+          });
+        }
+      },
+      error: () => this.errors.push('Error al cargar los detalles de la publicación.'),
+    });
   }
 
   private loadCreatorId(): void {
-    const userId = this.authService.getUser()?.id; // Puedes obtener esto de otra forma si no quieres usar `getUser`
+    const userId = this.authService.getUser()?.id;
 
     if (userId) {
       this.userSearchService.getCreatorId(userId).subscribe({
@@ -158,5 +170,8 @@ export default class PublicationFormComponent {
         });
       },
     });
+  }
+  cancel(): void {
+    this.location.back();
   }
 }

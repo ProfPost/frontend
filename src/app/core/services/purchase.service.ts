@@ -13,7 +13,11 @@ export class PurchaseService {
 
   private http = inject(HttpClient);
 
-  createPurchase(purchaseData: { user_id: number, subscription_id: number }): Observable<PurchaseResponse> {
+  createPurchase(purchaseData: { user_id: number, subscription_id: number, months: number }): Observable<PurchaseResponse> {
     return this.http.post<PurchaseResponse>(this.baseURL, purchaseData)
+  }
+
+  getPurchaseHistoryByUserId(user_id: number | undefined): Observable<any> {
+    return this.http.get<PurchaseResponse>(`${this.baseURL}/user/${user_id}`)
   }
 }

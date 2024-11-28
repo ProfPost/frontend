@@ -24,4 +24,18 @@ export class PublicationService {
   updatePublication(id: number, publication: PublicationCreateRequest): Observable<PublicationDetailsResponse> {
     return this.http.put<PublicationDetailsResponse>(`${this.baseURL}/creators/${id}`, publication);
   }
+
+  getPublicationDetails(): Observable<PublicationDetailsResponse[]> {
+    return this.http.get<PublicationDetailsResponse[]>(`${this.baseURL}`);
+  }
+
+  deletePublication(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/creators/${id}`);
+  }
+
+  getPublicationsByCreator(creatorId: number): Observable<PublicationDetailsResponse[]> {
+    return this.http.get<PublicationDetailsResponse[]>(`${this.baseURL}/by-creator`, {
+      params: {creatorId: creatorId.toString()}
+    });
+  }
 }

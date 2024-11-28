@@ -6,12 +6,12 @@ body {
 
 .container-layout {
   display: flex;
-  height: 100vh;
   background-color: #e5e8d8;
 }
 
 .main-content {
   background-color: #e5e8d8;
+  overflow-x: hidden;
 }
 
 .sidebar {
