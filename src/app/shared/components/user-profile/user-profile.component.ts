@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   isCreatorProfile: boolean = false;
 
   private userProfileService = inject(UserProfileService);
-  private authService = inject(AuthService);
+  protected authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
   private route = inject(ActivatedRoute);
