@@ -94,6 +94,20 @@
   transition: background-color 0.3s ease;
   position: absolute;
   right: 20px; /* Alinea el botón a la derecha */
+  bottom: 70px; /* Alinea el botón al fondo del contenedor */
+}
+
+.history-button {
+  background-color: #087443;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  right: 20px; /* Alinea el botón a la derecha */
   bottom: 20px; /* Alinea el botón al fondo del contenedor */
 }
 

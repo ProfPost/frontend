@@ -1,0 +1,19 @@
+/* purchases.component.css */
+
+.mat-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 16px;
+  text-align: center;
+}
+
+.mat-column-total {
+  text-align: right;
+}
+
+.mat-column-paymentStatus {
+  text-transform: capitalize;
+}
