@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   isCreatorProfile: boolean = false;
 
   private userProfileService = inject(UserProfileService);
-  private authService = inject(AuthService);
+  protected authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
   private route = inject(ActivatedRoute);
@@ -78,6 +78,15 @@ export class UserProfileComponent implements OnInit {
     const role = this.authService.getUserRole();
 
     const route = role === 'CREATOR' ? '/creator/profile/update' : '/reader/profile/update';
+
+    this.router.navigate([route]);
+  }
+
+  navigateToHistoryOrders(): void {
+    const authData = this.authService.getUser();
+    const id = authData?.id;
+
+    const route = '/reader/order/' + id;
 
     this.router.navigate([route]);
   }
