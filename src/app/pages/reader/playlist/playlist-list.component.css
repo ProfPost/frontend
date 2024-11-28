@@ -10,6 +10,7 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
+  min-height: 75vh; /* Asegura un alto mínimo para pantallas pequeñas */
 }
 
 /* Estilo de la lista de playlists */

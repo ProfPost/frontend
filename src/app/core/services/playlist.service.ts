@@ -15,7 +15,7 @@ export class PlaylistService {
   constructor() {}
 
   getAllPlaylists(): Observable<PlaylistResponse[]> {
-    return this.http.get<PlaylistResponse[]>(`${this.baseURL}`);
+    return this.http.get<PlaylistResponse[]>(`${this.baseURL}/my-playlists`);
   }
 
   getPlaylistById(id: number): Observable<PlaylistResponse> {
