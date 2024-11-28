@@ -82,6 +82,15 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  navigateToHistoryOrders(): void {
+    const authData = this.authService.getUser();
+    const id = authData?.id;
+
+    const route = '/reader/order/' + id;
+
+    this.router.navigate([route]);
+  }
+
   private showSnackBar(message: string): void {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,

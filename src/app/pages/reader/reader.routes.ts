@@ -8,6 +8,7 @@ import {SearcherComponent} from './searcher/searcher.component';
 import {SubscriptionsComponent} from './subscriptions/subscriptions.component';
 import {ShowPlansComponent} from '../../shared/components/show-plans/show-plans.component';
 import {HomeComponent} from '../home/home.component';
+import {OrdersComponent} from './orders/orders.component';
 
 export const readerroutes: Routes = [
   {
@@ -22,6 +23,7 @@ export const readerroutes: Routes = [
       { path: 'subscriptions', component: SubscriptionsComponent },
       { path: 'subscription', component: ShowPlansComponent },
       { path: 'subscription/checkout', component: PurchasesComponent },
+      { path: 'order/:id', component: OrdersComponent },
       { path: 'search', component: SearcherComponent }
     ],
   },
