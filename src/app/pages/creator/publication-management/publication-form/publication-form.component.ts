@@ -74,6 +74,7 @@ export default class PublicationFormComponent {
       '',
       [Validators.pattern(/.+\.jpg|.jpeg|.png|.gif|.bmp$/)],
     ],
+    userId: [this.authService.getUser()?.id]
   });
 
   ngOnInit(): void {
