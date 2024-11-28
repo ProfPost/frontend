@@ -17,7 +17,7 @@
         <button *ngIf="isOwnProfile" (click)="navigateToUpdateProfile()" class="update-button">
           Editar Perfil
         </button>
-        <button *ngIf="isOwnProfile" (click)="navigateToHistoryOrders()" class="history-button">
+        <button *ngIf="isOwnProfile && isCreatorProfile" (click)="navigateToHistoryOrders()" class="history-button">
           Ver historial de pagos
         </button>
       </div>
