@@ -1,1 +1,48 @@
-<p>subscriptions works!</p>
+<div class="subscriptions-container">
+  <h2>Mis suscripciones</h2>
+  <p *ngIf="subscriptions.length === 0" class="no-subscriptions-message">
+    Actualmente no tienes suscripciones activas.
+  </p>
+  <div *ngIf="subscriptions.length > 0">
+    <mat-table [dataSource]="subscriptions" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="creatorName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Creador </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions"> {{ subscriptions.creatorName }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="startDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Inicio </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions"> {{ subscriptions.startDate | date }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="endDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Fin </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions"> {{ subscriptions.endDate | date }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="planName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Plan </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions"> {{ subscriptions.planName }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions"> {{ subscriptions.state }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let subscriptions">
+          <button
+            color="warn"
+            (click)="unsuscribe(subscriptions.id)"
+            class="unsubscribe-button">
+            Unsubscribe
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
