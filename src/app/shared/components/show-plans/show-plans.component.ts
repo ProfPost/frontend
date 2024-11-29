@@ -12,7 +12,6 @@ import {SubscribeService} from '../../../core/services/subscription.service';
   standalone: true,
   imports: [
     NgForOf,
-    DecimalPipe,
     SubscriptionComponent,
     NgIf
   ],

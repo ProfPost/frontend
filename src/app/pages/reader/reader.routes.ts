@@ -23,6 +23,7 @@ export const readerroutes: Routes = [
       { path: 'subscriptions', component: SubscriptionsComponent },
       { path: 'subscription', component: ShowPlansComponent },
       { path: 'subscription/checkout', component: PurchasesComponent },
+      { path: 'donation/checkout', component: PurchasesComponent },
       { path: 'order/:id', component: OrdersComponent },
       { path: 'search', component: SearcherComponent }
     ],
