@@ -10,6 +10,7 @@ import {UpdateProfileComponent} from '../../shared/components/update-profile/upd
 import {HomeComponent} from '../home/home.component';
 import {PlaylistComponent} from '../reader/playlist/playlist.component';
 import {SearcherComponent} from '../reader/searcher/searcher.component';
+import {DonationComponent} from './donation/donation.component';
 
 export const creatorroutes: Routes = [
   {
@@ -24,6 +25,7 @@ export const creatorroutes: Routes = [
       { path: 'publications/new', component: PublicationFormComponent },
       { path: 'publications/list', component: PublicationListComponent },
       { path: 'playlist', component: PlaylistComponent },
+      { path: 'donations', component: DonationComponent },
       { path: 'publications/edit/:id', component: PublicationFormComponent },
       { path: 'category/new', component: CategoryFormComponent },
       { path: 'category/edit/:id', component: CategoryFormComponent },
