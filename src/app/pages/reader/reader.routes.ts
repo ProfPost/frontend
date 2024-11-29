@@ -11,6 +11,7 @@ import {SubscriptionsComponent} from './subscriptions/subscriptions.component';
 import {ShowPlansComponent} from '../../shared/components/show-plans/show-plans.component';
 import {HomeComponent} from '../home/home.component';
 import {OrdersComponent} from './orders/orders.component';
+import { ListPublicationsaddedComponent } from './playlist/list-publicationsadded/list-publicationsadded.component';
 
 export const readerroutes: Routes = [
   {
@@ -23,7 +24,8 @@ export const readerroutes: Routes = [
       { path: 'publications-catalog', component: HomeComponent },
       { path: 'playlist', component: PlaylistComponent },
       { path: 'playlist/create', component: PlaylistFormComponent },
-      { path: 'playlist/edit/:id', component: PlaylistFormComponent }, 
+      { path: 'playlist/edit/:id', component: PlaylistFormComponent },
+      { path: 'playlist/:id/publications', component: ListPublicationsaddedComponent },
       { path: 'subscriptions', component: SubscriptionsComponent },
       { path: 'subscription', component: ShowPlansComponent },
       { path: 'subscription/checkout', component: PurchasesComponent },

@@ -63,3 +63,31 @@ mat-card-content p {
   object-fit: cover;
   border-radius: 10px;
 }
+
+button.add-to-playlist-btn {
+  background: none;
+  border: none;
+  color: #087443; /* Rojo para el ícono de eliminar */
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end; /* Alinea el botón a la derecha */
+  padding: 8px 12px; /* Espaciado alrededor del botón */
+}
+
+button.add-to-playlist-btn:hover {
+  color: #45a049; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Estilo del botón del menú */
+button.menu-btn {
+  background: #e5e8d8;
+  border: #e5e8d8;
+  color: #087443; /* Gris medio, tono suave para el texto */
+}
+
+button.menu-btn:hover {
+  color: #23478e; /* Verde suave para el hover */
+  background: #e5e8d8; /* Fondo muy suave */
+  border-radius: 4px; /* Bordes redondeados para suavizar */
+  border: transparent;
+}

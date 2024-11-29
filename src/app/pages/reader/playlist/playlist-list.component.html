@@ -3,7 +3,9 @@
   <div *ngIf="playlists.length > 0; else noPlaylists">
     <div *ngFor="let playlist of playlists" class="playlist-item">
       <!-- Ícono de la playlist -->
-      <span class="material-icons library-music-icon">library_music</span>
+      <button (click)="goToPublications(playlist.id)" class="playlist-btn">
+        <span class="material-icons">library_music</span>
+      </button>
       <p>{{ playlist.name }}</p>
 
       <!-- Ícono de editar -->
