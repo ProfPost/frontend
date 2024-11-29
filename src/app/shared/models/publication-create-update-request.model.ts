@@ -7,5 +7,6 @@ export interface PublicationCreateRequest {
   visibility: string;
   category_id: number;
   creator_id: number;
+  userId: number;
   schedulePublishAt?: Date;
 }

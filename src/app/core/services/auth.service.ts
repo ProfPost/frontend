@@ -6,7 +6,7 @@ import { AuthRequest } from '../../shared/models/auth-request.model';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../shared/models/auth-response.model';
 import { RegisterRequest } from '../../shared/models/register-request.model';
-import { RegisterResponse } from '../../shared/models/register-response.models';
+import { RegisterResponse } from '../../shared/models/register-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -49,5 +49,4 @@ export class AuthService {
     const user = this.getUser();
     return user ? user.role : null;
   }
-
 }

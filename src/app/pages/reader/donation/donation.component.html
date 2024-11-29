@@ -1,0 +1,74 @@
+<div class="donate-container">
+  <button class="donate-button" (click)="openPopup()">
+    Donar
+  </button>
+</div>
+
+<!-- Popup para Donación -->
+<div class="popup-overlay" *ngIf="isPopupVisible">
+  <div class="popup">
+    <button class="close-button" (click)="closePopup()">×</button>
+
+    <h3>Realizar Donación</h3>
+    <p>Resumen de la donación:</p>
+
+    <div class="summary-item">
+      <span>Donación a:</span>
+      <span>{{ userName }}</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Monto a donar:</span>
+      <input
+        type="number"
+        [(ngModel)]="donationAmount"
+        (input)="calculateTotalPrice()"
+        min="1"
+        class="donation-input"
+      />
+      <span>USD</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Total:</span>
+      <span>$ {{ donationAmount | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="payment-method">
+      <span>Método de pago:</span>
+      <img src="assets/images/payments/paypal_logo.png" alt="Paypal" class="paypal-image">
+      <span class="secure-text">Seguro</span>
+    </div>
+
+    <button class="realize-button" (click)="processDonation()">Siguiente</button>
+    <p class="support-text">Tu donación apoyará directamente a {{ userName }}.</p>
+  </div>
+</div>
+
+<!-- Popup de Confirmación -->
+<div class="popup-overlay" *ngIf="isConfirmationPopupVisible">
+  <div class="popup">
+    <button class="close-button" (click)="isConfirmationPopupVisible = false">×</button>
+
+    <h3>Confirmación de Donación</h3>
+    <p>¡Gracias por tu generosa donación!</p>
+
+    <div class="summary-item">
+      <span>Donación a:</span>
+      <span>{{ userName }}</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Monto donado:</span>
+      <span>$ {{ donationAmount | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="payment-method">
+      <span>Método de pago:</span>
+      <img src="assets/images/payments/paypal_logo.png" alt="Paypal" class="paypal-image">
+      <span class="secure-text">Seguro</span>
+    </div>
+
+    <button class="realize-button" (click)="goToPayPal()">Ir a Pagar</button>
+  </div>
+</div>

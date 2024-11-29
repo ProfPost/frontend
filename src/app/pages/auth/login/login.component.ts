@@ -73,9 +73,8 @@ export class LoginComponent {
   }
 
   private showSnackBar(message: string): void {
-    this.snackBar.open('Login Successful', 'Close', {
-      duration: 2000,
-      verticalPosition: 'top',
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
     });
   }
 

@@ -1,0 +1,30 @@
+<div class="donors-container" *ngIf="!isLoading">
+  <h2>Donantes</h2>
+
+  <!-- Mostrar mensaje de error en caso de fallo -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Mostrar la lista de donantes -->
+  <div *ngIf="donors.length > 0; else noDonorsMessage">
+    <ul class="donors-list">
+      <li *ngFor="let donor of donors">
+        <div class="donor-item">
+          <span class="creator-name">{{ donor.creatorname }}</span>
+          <span class="donation-amount">{{ donor.amount | currency }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mensaje en caso de que no haya donantes -->
+  <ng-template #noDonorsMessage>
+    <p>No se han encontrado donantes para este creador.</p>
+  </ng-template>
+</div>
+
+<!-- Indicador de carga -->
+<div *ngIf="isLoading" class="loading-spinner">
+  <p>Cargando...</p>
+</div>

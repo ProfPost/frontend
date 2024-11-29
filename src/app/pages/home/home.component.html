@@ -17,7 +17,7 @@
 
   <!-- Lista de Publicaciones -->
   <div class="publication-list">
-    @for (publication of filteredPublications; track publication) {
+    <div *ngFor="let publication of filteredPublications">
       <mat-card class="publication-card">
         <mat-card-header>
           <mat-card-title>{{ publication.title }}</mat-card-title>
@@ -34,9 +34,32 @@
           [src]="publication.filePath | apiImg"
           [alt]="publication.title"
         />
+
+        <!-- Botón para abrir el menú emergente -->
+        <button
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="add-to-playlist-btn"
+        >
+          <span class="material-icons">playlist_add</span>
+        </button>
+
+        <!-- Menú emergente con las playlists -->
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button
+          class="menu-btn"
+            mat-menu-item
+            *ngFor="let playlist of playlists"
+            (click)="addPublicationToPlaylist(publication.id, playlist.id)"
+          >
+            {{ playlist.name }}
+          </button>
+        </mat-menu>
       </mat-card>
-    }@empty {
+    </div>
+
+    <ng-template #noPublications>
       <p>No se encontraron Publicaciones</p>
-    }
+    </ng-template>
   </div>
 </div>

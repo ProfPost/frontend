@@ -3,11 +3,14 @@ import {SubscribeService} from '../../../core/services/subscription.service';
 import {PurchaseService} from '../../../core/services/purchase.service';
 import {CheckoutService} from '../../../core/services/checkout.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SubscriptionResponse} from '../../models/SubscriptionResponse.model';
-import {PurchaseResponse} from '../../models/PurchaseResponse.model';
+import {SubscriptionResponse} from '../../models/subscription-response.model';
+import {PurchaseResponse} from '../../models/purchase-response.model';
 import {environment} from '../../../../environments/environment';
 import {NgIf} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {DonationService} from '../../../core/services/donation.service';
+import {DonationResponse} from '../../models/donation-response.model';
+import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-purchases',
@@ -20,8 +23,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class PurchasesComponent implements OnInit{
   private subscriptionService = inject(SubscribeService);
+  private donationService = inject(DonationService);
   private purchaseService = inject(PurchaseService);
   private checkoutService = inject(CheckoutService);
+  private authService = inject(AuthService);
   private snackBar = inject(MatSnackBar);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -34,7 +39,13 @@ export class PurchasesComponent implements OnInit{
       if (orderId) {
         this.captureOrder(orderId);
       } else {
-        this.initiateSubscription();
+        if (localStorage.getItem('subscriptionData')){
+          this.initiateSubscription();
+        } else{
+          if (localStorage.getItem('donationData')){
+            this.initiateDonation();
+          }
+        }
       }
     });
   }
@@ -49,9 +60,23 @@ export class PurchasesComponent implements OnInit{
       },
       error: () => {
         this.loading = false;
-        alert('Error en la suscripción')
+        this.showSnackBar('Error en la suscripción');
         this.clearlocalstorage();
       },
+    });
+  }
+
+  private initiateDonation(): void {
+    const donationData = JSON.parse(localStorage.getItem('donationData') || '{}');
+    const user = JSON.parse(localStorage.getItem('profpost_auth') || '{}');
+
+    const user_id = user.id;
+
+    this.donationService.createDonation(donationData).subscribe({
+      next: (response: DonationResponse) => {
+        localStorage.setItem('donationResponse', JSON.stringify(response));
+        this.createDonation(response.id, user_id);
+      }
     });
   }
 
@@ -63,7 +88,21 @@ export class PurchasesComponent implements OnInit{
       },
       error: () => {
         this.loading = false;
-        alert('Error al crear la compra');
+        this.showSnackBar('Error al redirigir al crear la compra');
+        this.clearlocalstorage();
+      },
+    });
+  }
+
+  private createDonation(donationId: number, userId: number): void {
+    this.purchaseService.initiatePurchase({ user_id: userId, donation_id: donationId }).subscribe({
+      next: (purchaseResponse: PurchaseResponse) => {
+        localStorage.setItem('purchaseResponse', JSON.stringify(purchaseResponse));
+        this.createCheckout(purchaseResponse.id);
+      },
+      error: () => {
+        this.loading = false;
+        this.showSnackBar('Error al redirigir al crear la compra');
         this.clearlocalstorage();
       },
     });
@@ -80,29 +119,32 @@ export class PurchasesComponent implements OnInit{
       },
       error: () => {
         this.loading = false;
-        alert('Error al redirigir a PayPal');
+        this.showSnackBar('Error al redirigir a PayPal');
         this.clearlocalstorage();
       },
     });
   }
 
   private captureOrder(orderId: string): void {
+    const user = JSON.parse(localStorage.getItem('profpost_auth') || '{}');
+
+    const user_id = user.id;
     this.checkoutService.captureOrder(orderId).subscribe({
       next: (response) => {
         if (response.completed) {
           this.clearlocalstorage();
-          this.router.navigate(['/reader/subscriptions']);
-          this.showSnackBar('Felicidades! Estás suscrito');
+          this.router.navigate(['/reader/order/' + user_id]);
+          this.showSnackBar('Felicidades! Gracias por tu compra <3');
         } else {
           this.router.navigate(['/reader/search']);
           this.clearlocalstorage();
-          this.showSnackBar('Lo sentimos, no pudiste suscribirte :c');
+          this.showSnackBar('Lo sentimos, no pudiste terminar la compra');
         }
       },
       error: () => {
         this.router.navigate(['/reader/search']);
-        alert('Error al capturar el pedido')
-        this.showSnackBar('Lo sentimos, no pudiste suscribirte :c');
+        this.showSnackBar('Error al capturar la compra');
+        this.showSnackBar('Lo sentimos, no pudiste terminar la compra');
         this.clearlocalstorage();
       }
     })

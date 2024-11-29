@@ -1,0 +1,115 @@
+/* Contenedor principal */
+.create-playlist-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #E5E8D8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh; /* Asegura un alto mínimo para pantallas pequeñas */
+  }
+  
+  .header h2 {
+    font-size: 24px;
+    color: #000000; /* Verde oscuro */
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  /* Estilo del formulario */
+  form {
+    width: 100%;
+    flex-grow: 1; /* Hace que el formulario ocupe el espacio restante */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    border-color: #087443; /* Verde al enfocar */
+    outline: none;
+  }
+  
+  .error-message {
+    color: #f44336; /* Rojo para el mensaje de error */
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Estilo para los botones */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group button[type="submit"] {
+    background-color: #087443; /* Verde */
+    color: white;
+  }
+  
+  .button-group button[type="submit"]:hover {
+    background-color: #45a049; /* Verde más oscuro */
+  }
+  
+  .button-group button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .button-group button[type="button"] {
+    background-color: #f44336; /* Rojo */
+    color: white;
+  }
+  
+  .button-group button[type="button"]:hover {
+    background-color: #d32f2f; /* Rojo más oscuro */
+  }
+  
+  /* Media Query para pantallas medianas */
+  @media (max-width: 768px) {
+    .create-playlist-container {
+      min-height: 60vh; /* Reduce el alto mínimo en pantallas medianas */
+      padding: 20px; /* Reduce el padding */
+    }
+  }
+  
+  /* Media Query para pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .create-playlist-container {
+      min-height: 50vh; /* Reduce aún más el alto mínimo */
+      padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+      margin: 20px auto; /* Reduce el margen */
+    }
+  }
+  
