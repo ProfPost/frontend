@@ -4,12 +4,6 @@ import { CreatorLayoutComponent } from './creator-layout/creator-layout.componen
 import PublicationFormComponent from './publication-management/publication-form/publication-form.component';
 import { CategoryFormComponent } from './category-management/category-form/category-form.component';
 import { CategoryListComponent } from './category-management/category-list/category-list.component';
-import {PublicationListComponent} from './publication-management/publication-list/publication-list.component';
-import {UserProfileComponent} from '../../shared/components/user-profile/user-profile.component';
-import {UpdateProfileComponent} from '../../shared/components/update-profile/update-profile.component';
-import {HomeComponent} from '../home/home.component';
-import {PlaylistComponent} from '../reader/playlist/playlist.component';
-import {SearcherComponent} from '../reader/searcher/searcher.component';
 import {DonationComponent} from './donation/donation.component';
 import { PublicationListComponent } from './publication-management/publication-list/publication-list.component';
 import { UserProfileComponent } from '../../shared/components/user-profile/user-profile.component';

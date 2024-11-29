@@ -12,6 +12,7 @@ import {ShowPlansComponent} from '../../shared/components/show-plans/show-plans.
 import {HomeComponent} from '../home/home.component';
 import {OrdersComponent} from './orders/orders.component';
 import { ListPublicationsaddedComponent } from './playlist/list-publicationsadded/list-publicationsadded.component';
+import {DonationComponent} from './donation/donation.component';
 
 export const readerroutes: Routes = [
   {
