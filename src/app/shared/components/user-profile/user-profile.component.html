@@ -14,6 +14,7 @@
         <p class="biography">{{ profile.biography }}</p>
         <br />
         <br />
+        <app-donation *ngIf="isCreatorProfile && !isOwnProfile" (redirect)="startPaymentProcess()"></app-donation>
         <button *ngIf="isOwnProfile" (click)="navigateToUpdateProfile()" class="update-button">
           Editar Perfil
         </button>
