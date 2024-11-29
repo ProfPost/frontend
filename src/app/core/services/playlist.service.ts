@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { PlaylistResponse } from '../../shared/models/playlist.response.model';
 import { PlaylistRequest } from '../../shared/models/playlistrequest.model';
+import { PublicationInPlaylist } from '../../shared/models/publicationinplaylist.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,32 @@ export class PlaylistService {
 
   deletePlaylist(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseURL}/${id}`);
+  }
+
+  getPublicationsByPlaylistId(
+    playlistId: number
+  ): Observable<PublicationInPlaylist[]> {
+    return this.http.get<PublicationInPlaylist[]>(
+      `${this.baseURL}/${playlistId}/publications`
+    );
+  }
+
+  addPublicationToPlaylist(
+    playlistId: number,
+    publicationId: number
+  ): Observable<any> {
+    return this.http.post(
+      `${this.baseURL}/add/publication?playlistId=${playlistId}&publicationId=${publicationId}`,
+      {}
+    );
+  }
+
+  removePublicationFromPlaylist(
+    playlistId: number,
+    publicationId: number
+  ): Observable<void> {
+    return this.http.delete<void>(
+      `${this.baseURL}/${playlistId}/publications/${publicationId}`
+    );
   }
 }

@@ -66,4 +66,8 @@ export class PlaylistComponent implements OnInit {
       duration: 3000,
     });
   }
+
+  goToPublications(playlistId: number): void {
+    this.router.navigate(['reader/playlist', playlistId, 'publications']);
+  }
 }

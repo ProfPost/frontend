@@ -46,12 +46,6 @@ div.playlist-container > div {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.icon {
-  font-size: 2em;
-  margin-right: 10px; /* Espacio entre el icono y el nombre */
-  color: #2d6a4f; /* Verde oscuro */
-}
-
 .playlist-item p {
   font-size: 1.2em;
   color: #555;
@@ -86,7 +80,7 @@ div.playlist-container > div {
 button.edit-btn {
   background: none;
   border: none;
-  color: #087443 ; /* Rojo para el ícono de eliminar */
+  color: #087443; /* Rojo para el ícono de eliminar */
   cursor: pointer;
 }
 
@@ -105,10 +99,15 @@ button.delete-btn:hover {
   color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
 }
 
-.library-music-icon {
-  font-size: 30px; /* Tamaño del ícono */
-  color: #000000; /* Color verde para el ícono de música */
-  margin-right: 5px; /* Espaciado a la derecha del ícono */
+button.playlist-btn {
+  background: none;
+  border: none;
+  color: #323f59; /* Rojo para el ícono de eliminar */
+  cursor: pointer;
+}
+
+button.playlist-btn:hover {
+  color: #23478e; /* Rojo más oscuro al pasar el mouse */
 }
 
 /* Estilo para el botón "Crear Playlist" */

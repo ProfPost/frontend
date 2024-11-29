@@ -1,0 +1,71 @@
+/* Estilos generales */
+.publications-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre el contenedor y las publicaciones */
+}
+
+/* Estilos para la lista de publicaciones */
+.publication-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las publicaciones */
+}
+
+/* Estilo de la tarjeta de publicación */
+.publication-card {
+  width: 100%;
+  background-color: #ffffff; /* Color de fondo */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin-bottom: 20px; /* Espacio adicional entre tarjetas */
+}
+
+.publication-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Título de la tarjeta */
+mat-card-header mat-card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Subtítulo de la tarjeta */
+mat-card-header mat-card-subtitle {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Contenido de la tarjeta */
+mat-card-content p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Estilo de la imagen dentro de la tarjeta */
+.mat-card-image {
+  max-height: 400px;
+  max-width: 300%;
+  display: block;
+  margin: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+button.delete-btn {
+    background: none;
+    border: none;
+    color: #f44336; /* Rojo para el ícono de eliminar */
+    cursor: pointer;
+  }
+  
+  button.delete-btn:hover {
+    color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+  }
