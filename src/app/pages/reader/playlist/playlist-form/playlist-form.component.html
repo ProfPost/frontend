@@ -1,0 +1,30 @@
+<div class="create-playlist-container">
+  <div class="header">
+    <h2>Crear Playlist</h2>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #playlistForm="ngForm">
+    <div class="form-group">
+      <label for="name">Nombre de la Playlist</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="playlist.name"
+        required
+        #name="ngModel"
+        placeholder="Nombre de la playlist"
+      />
+      <div *ngIf="name.invalid && name.touched" class="error-message">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" [disabled]="playlistForm.invalid">
+        Guardar Playlist
+      </button>
+      <button type="button" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>
