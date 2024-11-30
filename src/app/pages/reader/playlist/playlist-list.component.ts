@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { PlaylistResponse } from '../../../shared/models/playlist.response.model';
 import { PlaylistService } from '../../../core/services/playlist.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-playlist',
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class PlaylistComponent implements OnInit {
   playlists: PlaylistResponse[] = [];
 
+  private authService = inject(AuthService);
   constructor(
     private playlistService: PlaylistService,
     private router: Router,
@@ -38,11 +40,17 @@ export class PlaylistComponent implements OnInit {
   }
 
   goToCreatePlaylist(): void {
-    this.router.navigate(['reader/playlist/create']);
+    const role = this.authService.getUserRole();
+    const route = role === 'CREATOR' ? '/creator/playlist/create' : 'reader/playlist/create';
+
+    this.router.navigate([route]);
   }
 
   editPlaylist(playlistId: number): void {
-    this.router.navigate([`/reader/playlist/edit/${playlistId}`]);
+    const role = this.authService.getUserRole();
+    const route = role === 'CREATOR' ? '`/creator/playlist/edit/${playlistId}`' : '`reader/playlist/edit/${playlistId}`';
+
+    this.router.navigate([route]);
   }
 
   deletePlaylist(playlistId: number): void {
@@ -68,6 +76,9 @@ export class PlaylistComponent implements OnInit {
   }
 
   goToPublications(playlistId: number): void {
-    this.router.navigate(['reader/playlist', playlistId, 'publications']);
+    const role = this.authService.getUserRole();
+    const route = role === 'CREATOR' ? '/creator/playlist' : 'reader/playlist';
+
+    this.router.navigate([route]);
   }
 }
